@@ -58,19 +58,18 @@ extension EventEmitter {
     }
 
     mutating private func addListener<T>(eventName:String, newEventListener:EventListenerAction<T>) {
-        if var listenerArray = self.listeners?[eventName] {
-            listenerArray.append(newEventListener);
+        if listeners == nil {
+            listeners = Dictionary<String, Array<Any>>?()
         }
-        else {
-            self.listeners?[eventName] = [newEventListener];
+        if listeners?[eventName] == nil {
+            listeners?[eventName] = [Any]()
         }
+        listeners?[eventName]!.append(newEventListener)
     }
     
-    mutating func removeListeners(eventNameToRemoveOrNil:String?) {
-        if let eventNameToRemove = eventNameToRemoveOrNil {
-            if var actionArray = self.listeners?[eventNameToRemove] {
-                actionArray.removeAll();
-            }
+    mutating func removeListeners(eventName: String? = nil) {
+        if let event = eventName {
+            self.listeners?[event]?.removeAll()
         }
         else {
             self.listeners?.removeAll(keepCapacity: false);
