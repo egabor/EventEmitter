@@ -5,19 +5,19 @@ Example
 ========
 
 Subscribe to events w parameters:
-
+```swift
     appSessionHadler.on("login") { (token: String?) in
       //handle login with the token...
     }
-
+```
 Or w/o parameters:
-
+```swift
     appSessionHadler.on("logout") {
       //handle logout...
     }
-
+```
 Emit an event with an EventEmitter class
-
+```swift
     class SessionHandler: EventEmitter {
       var listeners = Dictionary<String, Array<Any>>?()
       
@@ -32,7 +32,7 @@ Emit an event with an EventEmitter class
         emit("logout")
       }
     }
-
+```
 Installation
 ========
 Requires Swift 2/Xcode 7
