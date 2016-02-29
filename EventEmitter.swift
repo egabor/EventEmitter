@@ -1,10 +1,6 @@
 //
-//  EventEmitter.swift
-//  Mooovy
-//
 //  Created by Gujgiczer Máté on 08/02/16.
-//  Ispired by Balázs Schwarzkopf
-//  Copyright © 2016 Runninglobe. All rights reserved.
+//  Ispired by Balázs Schwarzkopf -> https://github.com/schwarzkopfb
 //
 
 import Foundation
