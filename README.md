@@ -6,33 +6,35 @@ Example
 
 Subscribe to events w parameters:
 ```swift
-    appSessionHadler.on("login") { (token: String?) in
-      //handle login with the token...
-    }
+eventEmitterInstance.on("eventWithParameter") { (weak parameter: Any?) in
+    //...
+}
 ```
 Or w/o parameters:
 ```swift
-    appSessionHadler.on("logout") {
-      //handle logout...
-    }
+eventEmitterInstance.on("eventWithoutParameter") {
+    //...
+}
 ```
 Emit an event with an EventEmitter class
 ```swift
-    class SessionHandler: EventEmitter {
-      var listeners = Dictionary<String, Array<Any>>?()
-      
-      //...
-      public func logIn(withToken token: String?) {
-        //...
-        emit("login", information: token)
-      }
-      
-      public func logOut() {
-        //...
-        emit("logout")
-      }
-    }
+class EventEmitterClass: EventEmitter {
+  var listeners = Dictionary<String, Array<Any>>?()
+  
+  //...
+  public func foo(parameter: Any?) {
+    //...
+    emit("eventWithParameter", information: parameter)
+  }
+  
+  public func bar() {
+    //...
+    emit("eventWithoutParameter")
+  }
+}
 ```
+Note: This is a protocoll so you can use it with `struct`s as well.
+
 Installation
 ========
 Requires Swift 2/Xcode 7
