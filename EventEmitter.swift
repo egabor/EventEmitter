@@ -76,10 +76,15 @@ extension EventEmitter {
         }
     }
     
-    func emit(eventName:String, information:Any? = nil) {
+    func emit<T>(eventName:String, information:T? = nil) {
         if let actionObjects = self.listeners?[eventName] {
             actionObjects.forEach() {
-                ($0 as? EventListenerAction)?.listenerAction(information)
+                if let parameterizedAction = ($0 as? EventListenerAction<T>) {
+                    parameterizedAction.listenerAction(information)
+                }
+                else {
+                    ($0 as! EventListenerAction<Any>).listenerAction(information)
+                }
             }
         }
     }
