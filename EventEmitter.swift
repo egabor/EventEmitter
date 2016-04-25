@@ -38,7 +38,12 @@ public protocol EventEmitter {
     /// - Parameters:
     ///     - eventName: Matching listener eventNames will fire when this is called
     ///     - information: pass values to your listeners
-    func emit(eventName:String, information:Any?)
+    func emit(eventName:String, information:Any)
+    
+    /// Triggers an event
+    /// - Parameters:
+    ///     - eventName: Matching listener eventNames will fire when this is called
+    func emit(eventName:String)
     
     /// Removes all listeners by default, or specific listeners through paramters
     /// - Parameters:
@@ -76,14 +81,27 @@ extension EventEmitter {
         }
     }
     
-    func emit<T>(eventName:String, information:T? = nil) {
+    func emit(eventName: String) {
+        if let actionObjects = self.listeners?[eventName] {
+            actionObjects.forEach() {
+                if let parameterizedAction = ($0 as? EventListenerAction<Any>) {
+                    parameterizedAction.listenerAction(nil)
+                }
+            }
+        }
+    }
+    
+    func emit<T>(eventName:String, information:T) {
         if let actionObjects = self.listeners?[eventName] {
             actionObjects.forEach() {
                 if let parameterizedAction = ($0 as? EventListenerAction<T>) {
                     parameterizedAction.listenerAction(information)
                 }
+                else if let unParameterizedAction = $0 as? EventListenerAction<Any> {
+                    unParameterizedAction.listenerAction(information)
+                }
                 else {
-                    ($0 as! EventListenerAction<Any>).listenerAction(information)
+                    print("could not call callback")
                 }
             }
         }
