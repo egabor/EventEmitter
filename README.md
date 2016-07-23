@@ -19,7 +19,7 @@ eventEmitterInstance.on("eventWithoutParameter") {
 Emit an event with an EventEmitter class
 ```swift
 class EventEmitterClass: EventEmitter {
-  var listeners = Dictionary<String, Array<Any>>?()
+  var listeners: Dictionary<String, Array<Any>>? = Dictionary<String, Array<Any>>()
   
   //...
   public func foo(parameter: Any?) {
