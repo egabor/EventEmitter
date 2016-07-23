@@ -1,6 +1,8 @@
 # EventEmitter
 A lightweight tool to easily implement listener pattern.
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 Example
 ========
 
@@ -35,8 +37,43 @@ class EventEmitterClass: EventEmitter {
 ```
 Note: This is a protocoll so you can use it with `struct`s as well.
 
-Installation
-========
-Requires Swift 2/Xcode 7
+#Documentation
+### Functions to be called from an EventEmitter instance
+```swift
+emit(eventName:String, information:Any)
+```
+```swift
+emit(eventName:String)
+```
+### Functions to call on an EventEmitter instance
+#### subscribe
+```swift
+on(eventName:String, action:(()->()))
+```
+```swift
+on<T>(eventName:String, action:((T?)->()))
+```
+```swift
+on(eventNames:[String], action:(()->()))
+```
+```swift
+on<T>(eventNames:[String], action:((T?)->()))
+```
+```swift
+once(eventName:String, action:(()->()))
+```
+```swift
+once<T>(eventName:String, action:((T?)->()))
+```
+#### unsubscribe
+```swift
+removeListeners(eventNameToRemoveOrNil:String?)
+```
 
-For now you have to copy the `EventEmitter.swift` file to your project. 
+#Installation
+## Carthage 
+
+Put this line into your cartfile
+```
+github "Gujci/EventEmitter"
+```
