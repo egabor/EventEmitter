@@ -1,6 +1,9 @@
 //
+//  EventEmitter.swift
+//  Mooovy
+//
 //  Created by Gujgiczer Máté on 08/02/16.
-//  Ispired by Balázs Schwarzkopf -> https://github.com/schwarzkopfb
+//  Ispired by Balázs Schwarzkopf
 //
 
 import Foundation
@@ -28,11 +31,35 @@ public protocol EventEmitter {
     ///     - action: The block of code you want executed when the event triggers
     mutating func on(eventName:String, action:(()->()))
     
+    /// Create a new event listener for multiple events, not expecting information from the trigger
+    /// - Parameters:
+    ///     - eventNames: Matching trigger eventNames will cause this listener to fire
+    ///     - action: The block of code you want executed when the event triggers
+    mutating func on(eventNames:[String], action:(()->()))
+    
+    /// Create a new event listener, not expecting information from the trigger, unsuscribes from the event after first trigger
+    /// - Parameters:
+    ///     - eventName: Matching trigger eventNames will cause this listener to fire
+    ///     - action: The block of code you want executed when the event triggers
+    mutating func once(eventName:String, action:(()->()))
+    
     /// Create a new event listener, expecting information from the trigger
     /// - Parameters:
     ///     - eventName: Matching trigger eventNames will cause this listener to fire
     ///     - action: The block of code you want executed when the event triggers
     mutating func on<T>(eventName:String, action:((T?)->()))
+    
+    /// Create a new event listener for multiple events, expecting information from the trigger
+    /// - Parameters:
+    ///     - eventNames: Matching trigger eventNames will cause this listener to fire
+    ///     - action: The block of code you want executed when the event triggers
+    mutating func on<T>(eventNames:[String], action:((T?)->()))
+    
+    /// Create a new event listener, expecting information from the trigger, unsuscribes from the event after first trigger
+    /// - Parameters:
+    ///     - eventName: Matching trigger eventNames will cause this listener to fire
+    ///     - action: The block of code you want executed when the event triggers
+    mutating func once<T>(eventName:String, action:((T?)->()))
     
     /// Triggers an event
     /// - Parameters:
@@ -51,17 +78,49 @@ public protocol EventEmitter {
     mutating func removeListeners(eventNameToRemoveOrNil:String?)
 }
 
-extension EventEmitter {
+public extension EventEmitter {
     mutating func on(eventName:String, action:(()->())) {
         let newListener = EventListenerAction<Any>(callback: action);
         addListener(eventName, newEventListener: newListener)
     }
-
+    
+    mutating func on(eventNames:[String], action:(()->())) {
+        eventNames.forEach() { eventName in
+            let newListener = EventListenerAction<Any>(callback: action)
+            addListener(eventName, newEventListener: newListener)
+        }
+    }
+    
+    mutating func once(eventName:String, action:(()->())) {
+        let unsuscribeAction: () -> () = {
+            action()
+            self.removeListeners(eventName)
+        }
+        let newListener = EventListenerAction<Any>(callback: unsuscribeAction);
+        addListener(eventName, newEventListener: newListener)
+    }
+    
     mutating func on<T>(eventName:String, action:((T?)->())) {
         let newListener = EventListenerAction(callback: action);
         addListener(eventName, newEventListener: newListener)
     }
-
+    
+    mutating func on<T>(eventNames:[String], action:((T?)->())) {
+        eventNames.forEach() { eventName in
+            let newListener = EventListenerAction(callback: action)
+            addListener(eventName, newEventListener: newListener)
+        }
+    }
+    
+    mutating func once<T>(eventName:String, action:((T?)->())) {
+        let unsuscribeAction: (T?) -> () = { param in
+            action(param)
+            self.removeListeners(eventName)
+        }
+        let newListener = EventListenerAction(callback: unsuscribeAction);
+        addListener(eventName, newEventListener: newListener)
+    }
+    
     mutating private func addListener<T>(eventName:String, newEventListener:EventListenerAction<T>) {
         if listeners == nil {
             listeners = Dictionary<String, Array<Any>>?()
