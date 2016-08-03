@@ -18,6 +18,21 @@ eventEmitterInstance.on("eventWithoutParameter") {
     //...
 }
 ```
+
+Defining events with an enum is also supported:
+```swift
+public enum AppEvent: String, Event {
+    case Some = "some"
+    case Other = "other"
+}
+```
+
+```swift
+eventEmitterInstance.on(AppEvent.Some) {
+    //...
+}
+```
+
 Emit an event with an EventEmitter class
 ```swift
 class EventEmitterClass: EventEmitter {
@@ -45,6 +60,13 @@ emit(eventName:String, information:Any)
 ```swift
 emit(eventName:String)
 ```
+
+```swift
+emit(event: Event)
+```
+```swift
+emit<T>(event: Event, information: T)
+```
 ### Functions to call on an EventEmitter instance
 #### subscribe
 ```swift
@@ -65,9 +87,36 @@ once(eventName:String, action:(()->()))
 ```swift
 once<T>(eventName:String, action:((T?)->()))
 ```
+
+```swift
+on(event: Event, action: (() -> ()))
+```
+
+```swift
+on(events: [Event], action: (() -> ()))
+```
+
+```swift
+once(event: Event, action: (() -> ()))
+```
+
+```swift
+on<T>(event: Event, action: ((T?) -> ()))
+```
+
+```swift
+on<T>(events: [Event], action: ((T?) -> ()))
+```
+
+```swift
+once<T>(event: Event, action: ((T?) -> ()))
+```
 #### unsubscribe
 ```swift
 removeListeners(eventNameToRemoveOrNil:String?)
+```
+```swift
+removeListeners(eventToRemoveOrNil: Event?)
 ```
 
 #Installation
