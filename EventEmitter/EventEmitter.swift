@@ -121,16 +121,6 @@ public extension EventEmitter {
         addListener(eventName, newEventListener: newListener)
     }
     
-    mutating private func addListener<T>(eventName:String, newEventListener:EventListenerAction<T>) {
-        if listeners == nil {
-            listeners = Dictionary<String, Array<Any>>?()
-        }
-        if listeners?[eventName] == nil {
-            listeners?[eventName] = [Any]()
-        }
-        listeners?[eventName]!.append(newEventListener)
-    }
-    
     mutating func removeListeners(eventName: String? = nil) {
         if let event = eventName {
             self.listeners?[event]?.removeAll()
@@ -164,5 +154,18 @@ public extension EventEmitter {
                 }
             }
         }
+    }
+}
+
+// MARK: - Utils
+extension EventEmitter {
+    mutating private func addListener<T>(eventName:String, newEventListener:EventListenerAction<T>) {
+        if listeners == nil {
+            listeners = Dictionary<String, Array<Any>>?()
+        }
+        if listeners?[eventName] == nil {
+            listeners?[eventName] = [Any]()
+        }
+        listeners?[eventName]!.append(newEventListener)
     }
 }
