@@ -150,7 +150,7 @@ public extension EventEmitter {
                     unParameterizedAction.listenerAction(information)
                 }
                 else {
-                    print("could not call callback")
+                    print("could not call callback with \nname: \(eventName) \nand information: \(information)")
                 }
             }
         }
