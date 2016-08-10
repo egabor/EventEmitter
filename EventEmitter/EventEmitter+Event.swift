@@ -46,7 +46,21 @@ public extension EventEmitter {
         self.emit(event.rawValue)
     }
     
-    func emit<T>(event: Event, information:T) {
-        self.emit(event.rawValue, information: information)
+    func emit<T>(event: Event, information: T) {
+        //FIXME
+        if let actionObjects = self.listeners?[event.rawValue] {
+            actionObjects.forEach() {
+                if let parameterizedAction = ($0 as? EventListenerAction<T>) {
+                    parameterizedAction.listenerAction(information)
+                }
+                else if let unParameterizedAction = $0 as? EventListenerAction<Any> {
+                    unParameterizedAction.listenerAction(information)
+                }
+                else {
+                    print("could not call callback with \nname: \(event.rawValue) \nand information: \(information)")
+                }
+            }
+        }
+//        self.emit(event.rawValue, information: information)
     }
 }

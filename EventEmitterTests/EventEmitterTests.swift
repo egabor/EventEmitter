@@ -2,12 +2,23 @@
 //  EventEmitterTests.swift
 //  EventEmitterTests
 //
-//  Created by Gujgiczer Máté on 23/07/16.
+//  Created by Gujgiczer Máté on 10/08/16.
 //  Copyright © 2016 gujci. All rights reserved.
 //
 
 import XCTest
-@testable import EventEmitter
+
+enum TestEvent: String, Event {
+    case Test = "test"
+}
+
+class Test: EventEmitter {
+    var listeners : Dictionary<String, Array<Any>>? = [:]
+    
+    func testWithInfo() {
+        emit(TestEvent.Test, information: 10)
+    }
+}
 
 class EventEmitterTests: XCTestCase {
     
@@ -22,8 +33,20 @@ class EventEmitterTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let expectation = expectationWithDescription("callback")
+        
+        var test = Test()
+        test.on(TestEvent.Test) { (info: Int?) in
+            expectation.fulfill()
+        }
+        
+        test.testWithInfo()
+        
+        waitForExpectationsWithTimeout(10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
     }
     
     func testPerformanceExample() {

@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21450D5E1D5B703400ED7567 /* EventEmitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */; };
+		21450D601D5B703400ED7567 /* EventEmitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F197571D438E2400BEDAE3 /* EventEmitter.framework */; };
+		21450D671D5B708000ED7567 /* EventEmitter.framework in Resources */ = {isa = PBXBuildFile; fileRef = 21F197571D438E2400BEDAE3 /* EventEmitter.framework */; };
+		21450D681D5B70D900ED7567 /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F197711D438ED600BEDAE3 /* EventEmitter.swift */; };
+		21450D691D5B70DC00ED7567 /* EventEmitter+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A534001D5223520001C772 /* EventEmitter+Event.swift */; };
 		21A534011D5223520001C772 /* EventEmitter+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A534001D5223520001C772 /* EventEmitter+Event.swift */; };
-		21A534021D5223520001C772 /* EventEmitter+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A534001D5223520001C772 /* EventEmitter+Event.swift */; };
 		21F1975B1D438E2400BEDAE3 /* EventEmitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F1975A1D438E2400BEDAE3 /* EventEmitter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		21F197621D438E2400BEDAE3 /* EventEmitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F197571D438E2400BEDAE3 /* EventEmitter.framework */; };
-		21F197671D438E2400BEDAE3 /* EventEmitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F197661D438E2400BEDAE3 /* EventEmitterTests.swift */; };
 		21F197721D438ED600BEDAE3 /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F197711D438ED600BEDAE3 /* EventEmitter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		21F197631D438E2400BEDAE3 /* PBXContainerItemProxy */ = {
+		21450D611D5B703400ED7567 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 21F1974E1D438E2400BEDAE3 /* Project object */;
 			proxyType = 1;
@@ -26,17 +28,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21450D5B1D5B703400ED7567 /* EventEmitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventEmitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitterTests.swift; sourceTree = "<group>"; };
+		21450D5F1D5B703400ED7567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21A534001D5223520001C772 /* EventEmitter+Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventEmitter+Event.swift"; sourceTree = "<group>"; };
 		21F197571D438E2400BEDAE3 /* EventEmitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventEmitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F1975A1D438E2400BEDAE3 /* EventEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEmitter.h; sourceTree = "<group>"; };
 		21F1975C1D438E2400BEDAE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		21F197611D438E2400BEDAE3 /* EventEmitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventEmitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		21F197661D438E2400BEDAE3 /* EventEmitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitterTests.swift; sourceTree = "<group>"; };
-		21F197681D438E2400BEDAE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21F197711D438ED600BEDAE3 /* EventEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEmitter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		21450D581D5B703400ED7567 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21450D601D5B703400ED7567 /* EventEmitter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21F197531D438E2400BEDAE3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -44,22 +54,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		21F1975E1D438E2400BEDAE3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				21F197621D438E2400BEDAE3 /* EventEmitter.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21450D5C1D5B703400ED7567 /* EventEmitterTests */ = {
+			isa = PBXGroup;
+			children = (
+				21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */,
+				21450D5F1D5B703400ED7567 /* Info.plist */,
+			);
+			path = EventEmitterTests;
+			sourceTree = "<group>";
+		};
 		21F1974D1D438E2400BEDAE3 = {
 			isa = PBXGroup;
 			children = (
 				21F197591D438E2400BEDAE3 /* EventEmitter */,
-				21F197651D438E2400BEDAE3 /* EventEmitterTests */,
+				21450D5C1D5B703400ED7567 /* EventEmitterTests */,
 				21F197581D438E2400BEDAE3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				21F197571D438E2400BEDAE3 /* EventEmitter.framework */,
-				21F197611D438E2400BEDAE3 /* EventEmitterTests.xctest */,
+				21450D5B1D5B703400ED7567 /* EventEmitterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,15 +93,6 @@
 				21A534001D5223520001C772 /* EventEmitter+Event.swift */,
 			);
 			path = EventEmitter;
-			sourceTree = "<group>";
-		};
-		21F197651D438E2400BEDAE3 /* EventEmitterTests */ = {
-			isa = PBXGroup;
-			children = (
-				21F197661D438E2400BEDAE3 /* EventEmitterTests.swift */,
-				21F197681D438E2400BEDAE3 /* Info.plist */,
-			);
-			path = EventEmitterTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,6 +109,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		21450D5A1D5B703400ED7567 /* EventEmitterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21450D631D5B703400ED7567 /* Build configuration list for PBXNativeTarget "EventEmitterTests" */;
+			buildPhases = (
+				21450D571D5B703400ED7567 /* Sources */,
+				21450D581D5B703400ED7567 /* Frameworks */,
+				21450D591D5B703400ED7567 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				21450D621D5B703400ED7567 /* PBXTargetDependency */,
+			);
+			name = EventEmitterTests;
+			productName = EventEmitterTests;
+			productReference = 21450D5B1D5B703400ED7567 /* EventEmitterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		21F197561D438E2400BEDAE3 /* EventEmitter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21F1976B1D438E2400BEDAE3 /* Build configuration list for PBXNativeTarget "EventEmitter" */;
@@ -125,24 +145,6 @@
 			productReference = 21F197571D438E2400BEDAE3 /* EventEmitter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		21F197601D438E2400BEDAE3 /* EventEmitterTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 21F1976E1D438E2400BEDAE3 /* Build configuration list for PBXNativeTarget "EventEmitterTests" */;
-			buildPhases = (
-				21F1975D1D438E2400BEDAE3 /* Sources */,
-				21F1975E1D438E2400BEDAE3 /* Frameworks */,
-				21F1975F1D438E2400BEDAE3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				21F197641D438E2400BEDAE3 /* PBXTargetDependency */,
-			);
-			name = EventEmitterTests;
-			productName = EventEmitterTests;
-			productReference = 21F197611D438E2400BEDAE3 /* EventEmitterTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -153,10 +155,10 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = gujci;
 				TargetAttributes = {
-					21F197561D438E2400BEDAE3 = {
+					21450D5A1D5B703400ED7567 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
-					21F197601D438E2400BEDAE3 = {
+					21F197561D438E2400BEDAE3 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
 				};
@@ -174,20 +176,21 @@
 			projectRoot = "";
 			targets = (
 				21F197561D438E2400BEDAE3 /* EventEmitter */,
-				21F197601D438E2400BEDAE3 /* EventEmitterTests */,
+				21450D5A1D5B703400ED7567 /* EventEmitterTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		21F197551D438E2400BEDAE3 /* Resources */ = {
+		21450D591D5B703400ED7567 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21450D671D5B708000ED7567 /* EventEmitter.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		21F1975F1D438E2400BEDAE3 /* Resources */ = {
+		21F197551D438E2400BEDAE3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -197,6 +200,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		21450D571D5B703400ED7567 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21450D5E1D5B703400ED7567 /* EventEmitterTests.swift in Sources */,
+				21450D681D5B70D900ED7567 /* EventEmitter.swift in Sources */,
+				21450D691D5B70DC00ED7567 /* EventEmitter+Event.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21F197521D438E2400BEDAE3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,26 +219,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		21F1975D1D438E2400BEDAE3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				21A534021D5223520001C772 /* EventEmitter+Event.swift in Sources */,
-				21F197671D438E2400BEDAE3 /* EventEmitterTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		21F197641D438E2400BEDAE3 /* PBXTargetDependency */ = {
+		21450D621D5B703400ED7567 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 21F197561D438E2400BEDAE3 /* EventEmitter */;
-			targetProxy = 21F197631D438E2400BEDAE3 /* PBXContainerItemProxy */;
+			targetProxy = 21450D611D5B703400ED7567 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		21450D641D5B703400ED7567 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = EventEmitterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.EventEmitterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		21450D651D5B703400ED7567 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = EventEmitterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.EventEmitterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		21F197691D438E2400BEDAE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -352,29 +376,17 @@
 			};
 			name = Release;
 		};
-		21F1976F1D438E2400BEDAE3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = EventEmitterTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.EventEmitterTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		21F197701D438E2400BEDAE3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = EventEmitterTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.EventEmitterTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		21450D631D5B703400ED7567 /* Build configuration list for PBXNativeTarget "EventEmitterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21450D641D5B703400ED7567 /* Debug */,
+				21450D651D5B703400ED7567 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		21F197511D438E2400BEDAE3 /* Build configuration list for PBXProject "EventEmitter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -389,15 +401,6 @@
 			buildConfigurations = (
 				21F1976C1D438E2400BEDAE3 /* Debug */,
 				21F1976D1D438E2400BEDAE3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		21F1976E1D438E2400BEDAE3 /* Build configuration list for PBXNativeTarget "EventEmitterTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				21F1976F1D438E2400BEDAE3 /* Debug */,
-				21F197701D438E2400BEDAE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
