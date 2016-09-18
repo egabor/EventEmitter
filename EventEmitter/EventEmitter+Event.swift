@@ -14,39 +14,31 @@ public protocol Event {
 
 public extension EventEmitter {
     
-    mutating func on(event: Event, action:(()->())) {
+    mutating func on(_ event: Event, action:@escaping (()->())) {
         self.on(event.rawValue, action: action)
     }
     
-    mutating func on(events: [Event], action:(()->())) {
+    mutating func on(_ events: [Event], action:@escaping (()->())) {
         self.on(events.map() { $0.rawValue }, action: action)
     }
     
-    mutating func once(event: Event, action:(()->())) {
-        self.once(event.rawValue, action: action)
-    }
-    
-    mutating func on<T>(event: Event, action:((T?)->())) {
+    mutating func on<T>(_ event: Event, action:@escaping ((T?)->())) {
         self.on(event.rawValue, action: action)
     }
     
-    mutating func on<T>(events:[Event], action:((T?)->())) {
+    mutating func on<T>(_ events:[Event], action:@escaping ((T?)->())) {
         self.on(events.map() { $0.rawValue }, action: action)
     }
     
-    mutating func once<T>(event:Event, action:((T?)->())) {
-        self.once(event.rawValue, action: action)
-    }
-    
-    mutating func removeListeners(event: Event? = nil) {
+    mutating func removeListeners(_ event: Event? = nil) {
         self.removeListeners(event?.rawValue)
     }
     
-    func emit(event: Event) {
-        self.emit(event.rawValue)
+    func emit(_ event: Event) {
+        self.emit(event.rawValue as! Event)
     }
     
-    func emit<T>(event: Event, information: T) {
+    func emit<T>(_ event: Event, information: T) {
         //FIXME
         if let actionObjects = self.listeners?[event.rawValue] {
             actionObjects.forEach() {

@@ -13,6 +13,7 @@ enum TestEvent: String, Event {
 }
 
 class Test: EventEmitter {
+    
     var listeners : Dictionary<String, Array<Any>>? = [:]
     
     func testWithInfo() {
@@ -33,7 +34,7 @@ class EventEmitterTests: XCTestCase {
     }
     
     func testExample() {
-        let expectation = expectationWithDescription("callback")
+        let expectation = self.expectation(description: "callback")
         
         var test = Test()
         test.on(TestEvent.Test) { (info: Int?) in
@@ -42,7 +43,7 @@ class EventEmitterTests: XCTestCase {
         
         test.testWithInfo()
         
-        waitForExpectationsWithTimeout(10) { error in
+        waitForExpectations(timeout: 10) { error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
@@ -51,7 +52,7 @@ class EventEmitterTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }
