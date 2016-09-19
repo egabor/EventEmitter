@@ -35,7 +35,7 @@ public extension EventEmitter {
     }
     
     func emit(_ event: Event) {
-        self.emit(event.rawValue as! Event)
+        self.emit(event.rawValue)
     }
     
     func emit<T>(_ event: Event, information: T) {
