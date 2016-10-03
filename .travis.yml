@@ -4,11 +4,14 @@ xcode_project: EventEmitter.xcodeproj
 xcode_scheme: EventEmitter
 xcode_sdk: iphonesimulator10.0
 env:
-global:
-- FRAMEWORK_NAME=EventEmitter
+  global:
+  - FRAMEWORK_NAME=EventEmitter
 before_install:
 - brew update
 - brew outdated carthage || brew upgrade carthage
 before_deploy:
 - carthage build --no-skip-current
 - carthage archive $FRAMEWORK_NAME
+deploy:
+  file: EventEmitter.framework.zip
+  skip_cleanup: true
