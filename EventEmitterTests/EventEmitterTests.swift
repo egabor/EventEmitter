@@ -38,6 +38,7 @@ class EventEmitterTests: XCTestCase {
         
         var test = Test()
         test.on(TestEvent.Test) { (info: Int?) in
+            guard info == 10 else { return }
             expectation.fulfill()
         }
         
@@ -49,12 +50,4 @@ class EventEmitterTests: XCTestCase {
             }
         }
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }

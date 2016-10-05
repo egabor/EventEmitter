@@ -158,6 +158,7 @@
 					21450D5A1D5B703400ED7567 = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					21F197561D438E2400BEDAE3 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -235,6 +236,7 @@
 		21450D641D5B703400ED7567 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = EventEmitterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.EventEmitterTests;
@@ -246,6 +248,7 @@
 		21450D651D5B703400ED7567 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = EventEmitterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.EventEmitterTests;
