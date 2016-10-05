@@ -22,3 +22,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: Gujci/EventEmitter
+    tags: true
