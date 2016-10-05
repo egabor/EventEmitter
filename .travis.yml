@@ -13,11 +13,13 @@ before_deploy:
   - carthage build --no-skip-current
   - carthage archive $FRAMEWORK_NAME
 script: 
-  xcodebuild -project EventEmitter.xcodeproj -scheme 'EventEmitter' -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' build test
+  xcodebuild -project EventEmitter.xcodeproj -scheme 'EventEmitter' -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0' build test
 deploy:
   provider: releases
   api_key:
     secure: Lqs2NCy+LDczUrce8DtjPAYcffQh9a7M8Ay+Emewh1ST2az/PhifpA5GK305xCJtnYiF4YCRlBS7QL9lzc+phVngoOTFSwuIiO3/vX/zBhX7hqP2fWRwIFadVUo1KTQvU4PwmZD3EATjWhBZLDwUG757xjv+6rcL+99QjuC+7tkncvgVZcXle5jBqMr6f1vZYHKvEaZspUGaAVoyynJarCJbAAlv1aAIy/SIBfY7Qgw/TjJg3FrmRoKyWUgVers5kgIS2kTvUkk8UFlTgPeTw4erOgS+jvZAZIwFg89tWa/TSjnah6p4mYQXmXUgOWed1MP2/cVUptCbjUpkNnbYqYbF7S2CbMDg8SRZwxGa9uEYRC1tErd1rsJYu4fC+p3GLF6urB7OcFjpqabxC73nKv3/x5nLF1uicInS06v5/49dcOehsEMa9Yw3KStQaKBmD2Z2xqDFsxcFRJKIscq2TvDf9lScU1CaMjmWNYSjonpsHRPwBEQYhQnbYborG/A4HrLt+LtxBdnBWV4dai3uJZU47qKlAV19uNm3/nB9CCbrbtFbu8G5eICYp7MAMTcAgceAVlvxziwo+7+8rYXwmXgYxhCinaGPnNS9q26z0edxFP3p6NVQ1ZLHpcN/dV7Ou0mM3Nwt3w8F/3NnrvNQHMB1a930efqaiixKMvqx89w=
   file: "$FRAMEWORK_NAME.framework.zip"
+  skip_cleanup: true
   on:
     repo: Gujci/EventEmitter
+    tags: true
