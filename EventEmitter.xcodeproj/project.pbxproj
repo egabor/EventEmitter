@@ -10,11 +10,11 @@
 		21450D5E1D5B703400ED7567 /* EventEmitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */; };
 		21450D601D5B703400ED7567 /* EventEmitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F197571D438E2400BEDAE3 /* EventEmitter.framework */; };
 		21450D671D5B708000ED7567 /* EventEmitter.framework in Resources */ = {isa = PBXBuildFile; fileRef = 21F197571D438E2400BEDAE3 /* EventEmitter.framework */; };
-		21450D681D5B70D900ED7567 /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F197711D438ED600BEDAE3 /* EventEmitter.swift */; };
-		21450D691D5B70DC00ED7567 /* EventEmitter+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A534001D5223520001C772 /* EventEmitter+Event.swift */; };
-		21A534011D5223520001C772 /* EventEmitter+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A534001D5223520001C772 /* EventEmitter+Event.swift */; };
 		21F1975B1D438E2400BEDAE3 /* EventEmitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F1975A1D438E2400BEDAE3 /* EventEmitter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		21F197721D438ED600BEDAE3 /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F197711D438ED600BEDAE3 /* EventEmitter.swift */; };
+		21FC8D7A1DA5A9F700143129 /* EventEmitter+DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC8D791DA5A9F700143129 /* EventEmitter+DispatchQueue.swift */; };
+		21FC8D7E1DA5B0FA00143129 /* EventEmitterQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC8D7D1DA5B0FA00143129 /* EventEmitterQueueTests.swift */; };
+		21FC8D801DA5B66200143129 /* EventEmitter+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC8D7F1DA5B66200143129 /* EventEmitter+DefaultImplementation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,11 +31,13 @@
 		21450D5B1D5B703400ED7567 /* EventEmitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventEmitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitterTests.swift; sourceTree = "<group>"; };
 		21450D5F1D5B703400ED7567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		21A534001D5223520001C772 /* EventEmitter+Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventEmitter+Event.swift"; sourceTree = "<group>"; };
 		21F197571D438E2400BEDAE3 /* EventEmitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventEmitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F1975A1D438E2400BEDAE3 /* EventEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEmitter.h; sourceTree = "<group>"; };
 		21F1975C1D438E2400BEDAE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21F197711D438ED600BEDAE3 /* EventEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEmitter.swift; sourceTree = "<group>"; };
+		21FC8D791DA5A9F700143129 /* EventEmitter+DispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventEmitter+DispatchQueue.swift"; sourceTree = "<group>"; };
+		21FC8D7D1DA5B0FA00143129 /* EventEmitterQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEmitterQueueTests.swift; sourceTree = "<group>"; };
+		21FC8D7F1DA5B66200143129 /* EventEmitter+DefaultImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventEmitter+DefaultImplementation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +62,9 @@
 		21450D5C1D5B703400ED7567 /* EventEmitterTests */ = {
 			isa = PBXGroup;
 			children = (
-				21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */,
 				21450D5F1D5B703400ED7567 /* Info.plist */,
+				21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */,
+				21FC8D7D1DA5B0FA00143129 /* EventEmitterQueueTests.swift */,
 			);
 			path = EventEmitterTests;
 			sourceTree = "<group>";
@@ -90,7 +93,8 @@
 				21F1975A1D438E2400BEDAE3 /* EventEmitter.h */,
 				21F1975C1D438E2400BEDAE3 /* Info.plist */,
 				21F197711D438ED600BEDAE3 /* EventEmitter.swift */,
-				21A534001D5223520001C772 /* EventEmitter+Event.swift */,
+				21FC8D791DA5A9F700143129 /* EventEmitter+DispatchQueue.swift */,
+				21FC8D7F1DA5B66200143129 /* EventEmitter+DefaultImplementation.swift */,
 			);
 			path = EventEmitter;
 			sourceTree = "<group>";
@@ -208,8 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21450D5E1D5B703400ED7567 /* EventEmitterTests.swift in Sources */,
-				21450D681D5B70D900ED7567 /* EventEmitter.swift in Sources */,
-				21450D691D5B70DC00ED7567 /* EventEmitter+Event.swift in Sources */,
+				21FC8D7E1DA5B0FA00143129 /* EventEmitterQueueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,8 +220,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21A534011D5223520001C772 /* EventEmitter+Event.swift in Sources */,
+				21FC8D7A1DA5A9F700143129 /* EventEmitter+DispatchQueue.swift in Sources */,
 				21F197721D438ED600BEDAE3 /* EventEmitter.swift in Sources */,
+				21FC8D801DA5B66200143129 /* EventEmitter+DefaultImplementation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

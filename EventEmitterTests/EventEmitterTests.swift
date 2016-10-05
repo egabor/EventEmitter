@@ -7,42 +7,64 @@
 //
 
 import XCTest
+@testable import EventEmitter
 
 enum TestEvent: String, Event {
-    case Test = "test"
+    case test
+    case other
 }
 
-class Test: EventEmitter {
-    
+class TestEmitter: EventEmitter {
     var listeners : Dictionary<String, Array<Any>>? = [:]
-    
-    func testWithInfo() {
-        emit(TestEvent.Test, information: 10)
-    }
 }
 
 class EventEmitterTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    var testEmitter = TestEmitter()
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        let expectation = self.expectation(description: "callback")
+    func testSingleEvent() {
+        let expectation = self.expectation(description: "singe event")
         
-        var test = Test()
-        test.on(TestEvent.Test) { (info: Int?) in
-            guard info == 10 else { return }
+        testEmitter.on(TestEvent.test) { (info: Int?) in
+            XCTAssertEqual(info, 10)
             expectation.fulfill()
         }
         
-        test.testWithInfo()
+        testEmitter.emit(TestEvent.test, information: 10)
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testSingleString() {
+        let expectation = self.expectation(description: "singe string")
+        
+        testEmitter.on("testString") { (info: Int?) in
+            XCTAssertEqual(info, 10)
+            expectation.fulfill()
+        }
+        
+        testEmitter.emit("testString", information: 10)
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testMultipleEvents() {
+        let expectation = self.expectation(description: "multiple events")
+        
+        testEmitter.on([TestEvent.test, TestEvent.other]) { (info: Int?) in
+            XCTAssertEqual(info, 10)
+            expectation.fulfill()
+        }
+        
+        testEmitter.emit(TestEvent.test, information: 10)
         
         waitForExpectations(timeout: 10) { error in
             if let error = error {
