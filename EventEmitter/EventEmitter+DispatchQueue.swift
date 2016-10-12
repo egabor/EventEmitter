@@ -14,9 +14,23 @@ public extension EventEmitter {
     /// - Parameters:
     ///     - eventName: Matching listener eventNames will fire when this is called
     ///     - information: pass values to your listeners
-    func emit(onMain event: Event, information: Any) {
+    func emit<T: Any>(onMain event: Event, information: T) {
         DispatchQueue.main.async {
-            self.emit(event, information: information)
+            //FIXME: - make this call work !!!
+//            self.emit(event, information: information as T)
+            if let actionObjects = self.listeners?[event.rawValue] {
+                actionObjects.forEach() {
+                    if let parameterizedAction = ($0 as? EventListenerAction<T>) {
+                        parameterizedAction.listenerAction(information)
+                    }
+                    else if let unParameterizedAction = $0 as? EventListenerAction<Any> {
+                        unParameterizedAction.listenerAction(information)
+                    }
+                    else {
+                        print("could not call callback on \(event) \nwith information \"\(information)\" which is a \(Mirror(reflecting: information).subjectType)")
+                    }
+                }
+            }
         }
     }
     

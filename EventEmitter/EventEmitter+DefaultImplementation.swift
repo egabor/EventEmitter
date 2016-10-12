@@ -74,7 +74,7 @@ public extension EventEmitter {
         }
     }
     
-    func emit<T>(_ event:Event, information:T) {
+    func emit<T: Any>(_ event:Event, information:T) {
         if let actionObjects = self.listeners?[event.rawValue] {
             actionObjects.forEach() {
                 if let parameterizedAction = ($0 as? EventListenerAction<T>) {
@@ -84,7 +84,7 @@ public extension EventEmitter {
                     unParameterizedAction.listenerAction(information)
                 }
                 else {
-                    print("could not call callback with \n: \(event) \nand information: \(information)")
+                    print("could not call callback on \(event) \nwith information \"\(information)\" which is a \(Mirror(reflecting: information).subjectType)")
                 }
             }
         }

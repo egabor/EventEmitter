@@ -32,6 +32,26 @@ class EventEmitterQueueTests: XCTestCase {
         }
     }
     
+    func testMainParameteredEvent() {
+        let expectation = self.expectation(description: "main event w/ parameter")
+        
+        testEmitter.on(TestEvent.test) { (info: String?) in
+            XCTAssert(info == "asd")
+            XCTAssertTrue(Thread.isMainThread)
+            expectation.fulfill()
+        }
+        
+        DispatchQueue.global().async {
+            self.testEmitter.emit(onMain: TestEvent.test, information: "asd")
+        }
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
     func testMainEventNegative() {
         let expectation = self.expectation(description: "main event negative")
         
