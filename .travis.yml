@@ -23,3 +23,8 @@ deploy:
   on:
     repo: Gujci/EventEmitter
     tags: true
+notifications:
+  slack:
+    rooms:
+      - gujci:1WKhCkD33qOjMYqnox26PZO3#general
+  email: false
