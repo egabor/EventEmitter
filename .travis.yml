@@ -26,5 +26,5 @@ deploy:
 notifications:
   slack:
     rooms:
-      - gujci:1WKhCkD33qOjMYqnox26PZO3#general
+      - gujci:1WKhCkD33qOjMYqnox26PZO3#eventemitter
   email: false
