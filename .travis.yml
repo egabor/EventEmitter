@@ -13,8 +13,9 @@ before_deploy:
   - carthage build --no-skip-current
   - carthage archive $FRAMEWORK_NAME
 script: 
-  xcodebuild -project EventEmitter.xcodeproj -scheme 'EventEmitter iOS' -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-  xcodebuild -project EventEmitter.xcodeproj -scheme 'EventEmitter tvOS' -destination 'platform=tvOS Simulator,name=Apple TV 1080p' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+  - set -o pipefail
+  - travis_retry xcodebuild -project EventEmitter.xcodeproj -scheme 'EventEmitter iOS' -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+  - travis_retry xcodebuild -project EventEmitter.xcodeproj -scheme 'EventEmitter tvOS' -destination 'platform=tvOS Simulator,name=Apple TV 1080p' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 deploy:
   provider: releases
   api_key:
