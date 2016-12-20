@@ -10,6 +10,15 @@
 		21450D5E1D5B703400ED7567 /* EventEmitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */; };
 		21450D601D5B703400ED7567 /* EventEmitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F197571D438E2400BEDAE3 /* EventEmitter.framework */; };
 		21450D671D5B708000ED7567 /* EventEmitter.framework in Resources */ = {isa = PBXBuildFile; fileRef = 21F197571D438E2400BEDAE3 /* EventEmitter.framework */; };
+		2158E43B1E093E4E002A957E /* EventEmitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2158E4321E093E4D002A957E /* EventEmitter.framework */; };
+		2158E4491E093EDE002A957E /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F197711D438ED600BEDAE3 /* EventEmitter.swift */; };
+		2158E44A1E093EE1002A957E /* EventEmitter+DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC8D791DA5A9F700143129 /* EventEmitter+DispatchQueue.swift */; };
+		2158E44B1E093EE3002A957E /* EventEmitter+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC8D7F1DA5B66200143129 /* EventEmitter+DefaultImplementation.swift */; };
+		2158E44C1E093EE5002A957E /* EventEmitter+EventForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F34A771DC22A4200FBE73E /* EventEmitter+EventForward.swift */; };
+		2158E44D1E093EE8002A957E /* EventEmitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */; };
+		2158E44E1E093EEA002A957E /* EventEmitterQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC8D7D1DA5B0FA00143129 /* EventEmitterQueueTests.swift */; };
+		2158E44F1E093EED002A957E /* EventEmitterForwardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F34A791DC22CB200FBE73E /* EventEmitterForwardTests.swift */; };
+		2158E4501E093F16002A957E /* EventEmitter.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2158E4321E093E4D002A957E /* EventEmitter.framework */; };
 		21F1975B1D438E2400BEDAE3 /* EventEmitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F1975A1D438E2400BEDAE3 /* EventEmitter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		21F197721D438ED600BEDAE3 /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F197711D438ED600BEDAE3 /* EventEmitter.swift */; };
 		21F34A781DC22A4200FBE73E /* EventEmitter+EventForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F34A771DC22A4200FBE73E /* EventEmitter+EventForward.swift */; };
@@ -27,15 +36,25 @@
 			remoteGlobalIDString = 21F197561D438E2400BEDAE3;
 			remoteInfo = EventEmitter;
 		};
+		2158E43C1E093E4E002A957E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21F1974E1D438E2400BEDAE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2158E4311E093E4D002A957E;
+			remoteInfo = "EventEmitter tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		21450D5B1D5B703400ED7567 /* EventEmitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventEmitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitterTests.swift; sourceTree = "<group>"; };
 		21450D5F1D5B703400ED7567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2158E4321E093E4D002A957E /* EventEmitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventEmitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2158E4351E093E4E002A957E /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-tvOS.plist"; path = "EventEmitter tvOS/Info-tvOS.plist"; sourceTree = "<group>"; };
+		2158E43A1E093E4E002A957E /* EventEmitter tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EventEmitter tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F197571D438E2400BEDAE3 /* EventEmitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventEmitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F1975A1D438E2400BEDAE3 /* EventEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEmitter.h; sourceTree = "<group>"; };
-		21F1975C1D438E2400BEDAE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21F1975C1D438E2400BEDAE3 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-iOS.plist"; path = "EventEmitter/Info-iOS.plist"; sourceTree = "<group>"; };
 		21F197711D438ED600BEDAE3 /* EventEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEmitter.swift; sourceTree = "<group>"; };
 		21F34A771DC22A4200FBE73E /* EventEmitter+EventForward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventEmitter+EventForward.swift"; sourceTree = "<group>"; };
 		21F34A791DC22CB200FBE73E /* EventEmitterForwardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEmitterForwardTests.swift; sourceTree = "<group>"; };
@@ -50,6 +69,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				21450D601D5B703400ED7567 /* EventEmitter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2158E42E1E093E4D002A957E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2158E4371E093E4E002A957E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2158E43B1E093E4E002A957E /* EventEmitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,9 +108,19 @@
 			path = EventEmitterTests;
 			sourceTree = "<group>";
 		};
+		2158E42C1E093E1B002A957E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				21F1975C1D438E2400BEDAE3 /* Info-iOS.plist */,
+				2158E4351E093E4E002A957E /* Info-tvOS.plist */,
+			);
+			name = "Support Files";
+			sourceTree = "<group>";
+		};
 		21F1974D1D438E2400BEDAE3 = {
 			isa = PBXGroup;
 			children = (
+				2158E42C1E093E1B002A957E /* Support Files */,
 				21F197591D438E2400BEDAE3 /* EventEmitter */,
 				21450D5C1D5B703400ED7567 /* EventEmitterTests */,
 				21F197581D438E2400BEDAE3 /* Products */,
@@ -88,6 +132,8 @@
 			children = (
 				21F197571D438E2400BEDAE3 /* EventEmitter.framework */,
 				21450D5B1D5B703400ED7567 /* EventEmitterTests.xctest */,
+				2158E4321E093E4D002A957E /* EventEmitter.framework */,
+				2158E43A1E093E4E002A957E /* EventEmitter tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				21F1975A1D438E2400BEDAE3 /* EventEmitter.h */,
-				21F1975C1D438E2400BEDAE3 /* Info.plist */,
 				21F197711D438ED600BEDAE3 /* EventEmitter.swift */,
 				21FC8D791DA5A9F700143129 /* EventEmitter+DispatchQueue.swift */,
 				21FC8D7F1DA5B66200143129 /* EventEmitter+DefaultImplementation.swift */,
@@ -108,6 +153,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		2158E42F1E093E4D002A957E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21F197541D438E2400BEDAE3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,9 +189,45 @@
 			productReference = 21450D5B1D5B703400ED7567 /* EventEmitterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		21F197561D438E2400BEDAE3 /* EventEmitter */ = {
+		2158E4311E093E4D002A957E /* EventEmitter tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21F1976B1D438E2400BEDAE3 /* Build configuration list for PBXNativeTarget "EventEmitter" */;
+			buildConfigurationList = 2158E4431E093E4E002A957E /* Build configuration list for PBXNativeTarget "EventEmitter tvOS" */;
+			buildPhases = (
+				2158E42D1E093E4D002A957E /* Sources */,
+				2158E42E1E093E4D002A957E /* Frameworks */,
+				2158E42F1E093E4D002A957E /* Headers */,
+				2158E4301E093E4D002A957E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "EventEmitter tvOS";
+			productName = "EventEmitter tvOS";
+			productReference = 2158E4321E093E4D002A957E /* EventEmitter.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2158E4391E093E4E002A957E /* EventEmitter tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2158E4461E093E4E002A957E /* Build configuration list for PBXNativeTarget "EventEmitter tvOSTests" */;
+			buildPhases = (
+				2158E4361E093E4E002A957E /* Sources */,
+				2158E4371E093E4E002A957E /* Frameworks */,
+				2158E4381E093E4E002A957E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2158E43D1E093E4E002A957E /* PBXTargetDependency */,
+			);
+			name = "EventEmitter tvOSTests";
+			productName = "EventEmitter tvOSTests";
+			productReference = 2158E43A1E093E4E002A957E /* EventEmitter tvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		21F197561D438E2400BEDAE3 /* EventEmitter iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21F1976B1D438E2400BEDAE3 /* Build configuration list for PBXNativeTarget "EventEmitter iOS" */;
 			buildPhases = (
 				21F197521D438E2400BEDAE3 /* Sources */,
 				21F197531D438E2400BEDAE3 /* Frameworks */,
@@ -150,7 +238,7 @@
 			);
 			dependencies = (
 			);
-			name = EventEmitter;
+			name = "EventEmitter iOS";
 			productName = EventEmitter;
 			productReference = 21F197571D438E2400BEDAE3 /* EventEmitter.framework */;
 			productType = "com.apple.product-type.framework";
@@ -161,7 +249,7 @@
 		21F1974E1D438E2400BEDAE3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = gujci;
 				TargetAttributes = {
@@ -169,6 +257,16 @@
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
+					};
+					2158E4311E093E4D002A957E = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = TE3XP65K6X;
+						ProvisioningStyle = Automatic;
+					};
+					2158E4391E093E4E002A957E = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = TE3XP65K6X;
+						ProvisioningStyle = Automatic;
 					};
 					21F197561D438E2400BEDAE3 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -188,8 +286,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				21F197561D438E2400BEDAE3 /* EventEmitter */,
+				21F197561D438E2400BEDAE3 /* EventEmitter iOS */,
 				21450D5A1D5B703400ED7567 /* EventEmitterTests */,
+				2158E4311E093E4D002A957E /* EventEmitter tvOS */,
+				2158E4391E093E4E002A957E /* EventEmitter tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -200,6 +300,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				21450D671D5B708000ED7567 /* EventEmitter.framework in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2158E4301E093E4D002A957E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2158E4381E093E4E002A957E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2158E4501E093F16002A957E /* EventEmitter.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +338,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2158E42D1E093E4D002A957E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2158E44C1E093EE5002A957E /* EventEmitter+EventForward.swift in Sources */,
+				2158E44A1E093EE1002A957E /* EventEmitter+DispatchQueue.swift in Sources */,
+				2158E4491E093EDE002A957E /* EventEmitter.swift in Sources */,
+				2158E44B1E093EE3002A957E /* EventEmitter+DefaultImplementation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2158E4361E093E4E002A957E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2158E44D1E093EE8002A957E /* EventEmitterTests.swift in Sources */,
+				2158E44F1E093EED002A957E /* EventEmitterForwardTests.swift in Sources */,
+				2158E44E1E093EEA002A957E /* EventEmitterQueueTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21F197521D438E2400BEDAE3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,8 +375,13 @@
 /* Begin PBXTargetDependency section */
 		21450D621D5B703400ED7567 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 21F197561D438E2400BEDAE3 /* EventEmitter */;
+			target = 21F197561D438E2400BEDAE3 /* EventEmitter iOS */;
 			targetProxy = 21450D611D5B703400ED7567 /* PBXContainerItemProxy */;
+		};
+		2158E43D1E093E4E002A957E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2158E4311E093E4D002A957E /* EventEmitter tvOS */;
+			targetProxy = 2158E43C1E093E4E002A957E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -266,6 +407,86 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.EventEmitterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		2158E4441E093E4E002A957E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TE3XP65K6X;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/EventEmitter tvOS/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gujci.EventEmitter-tvOS";
+				PRODUCT_NAME = EventEmitter;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Debug;
+		};
+		2158E4451E093E4E002A957E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TE3XP65K6X;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/EventEmitter tvOS/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gujci.EventEmitter-tvOS";
+				PRODUCT_NAME = EventEmitter;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Release;
+		};
+		2158E4471E093E4E002A957E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = TE3XP65K6X;
+				INFOPLIST_FILE = EventEmitterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gujci.EventEmitter-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Debug;
+		};
+		2158E4481E093E4E002A957E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = TE3XP65K6X;
+				INFOPLIST_FILE = EventEmitterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gujci.EventEmitter-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
 		};
@@ -374,12 +595,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = EventEmitter/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/EventEmitter/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.EventEmitter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EventEmitter;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -396,12 +617,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = EventEmitter/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/EventEmitter/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.EventEmitter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EventEmitter;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -420,6 +641,22 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		2158E4431E093E4E002A957E /* Build configuration list for PBXNativeTarget "EventEmitter tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2158E4441E093E4E002A957E /* Debug */,
+				2158E4451E093E4E002A957E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2158E4461E093E4E002A957E /* Build configuration list for PBXNativeTarget "EventEmitter tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2158E4471E093E4E002A957E /* Debug */,
+				2158E4481E093E4E002A957E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		21F197511D438E2400BEDAE3 /* Build configuration list for PBXProject "EventEmitter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -429,7 +666,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21F1976B1D438E2400BEDAE3 /* Build configuration list for PBXNativeTarget "EventEmitter" */ = {
+		21F1976B1D438E2400BEDAE3 /* Build configuration list for PBXNativeTarget "EventEmitter iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21F1976C1D438E2400BEDAE3 /* Debug */,
