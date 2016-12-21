@@ -48,7 +48,7 @@
 
 /* Begin PBXFileReference section */
 		2124A2461E0ACEA4000953F1 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-tvOS.plist"; path = "EventEmitter/Info-tvOS.plist"; sourceTree = "<group>"; };
-		21450D5B1D5B703400ED7567 /* EventEmitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventEmitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		21450D5B1D5B703400ED7567 /* EventEmitter iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EventEmitter iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitterTests.swift; sourceTree = "<group>"; };
 		21450D5F1D5B703400ED7567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2158E4321E093E4D002A957E /* EventEmitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventEmitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				21F197571D438E2400BEDAE3 /* EventEmitter.framework */,
-				21450D5B1D5B703400ED7567 /* EventEmitterTests.xctest */,
+				21450D5B1D5B703400ED7567 /* EventEmitter iOSTests.xctest */,
 				2158E4321E093E4D002A957E /* EventEmitter.framework */,
 				2158E43A1E093E4E002A957E /* EventEmitter tvOSTests.xctest */,
 			);
@@ -172,9 +172,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		21450D5A1D5B703400ED7567 /* EventEmitterTests */ = {
+		21450D5A1D5B703400ED7567 /* EventEmitter iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21450D631D5B703400ED7567 /* Build configuration list for PBXNativeTarget "EventEmitterTests" */;
+			buildConfigurationList = 21450D631D5B703400ED7567 /* Build configuration list for PBXNativeTarget "EventEmitter iOSTests" */;
 			buildPhases = (
 				21450D571D5B703400ED7567 /* Sources */,
 				21450D581D5B703400ED7567 /* Frameworks */,
@@ -185,9 +185,9 @@
 			dependencies = (
 				21450D621D5B703400ED7567 /* PBXTargetDependency */,
 			);
-			name = EventEmitterTests;
+			name = "EventEmitter iOSTests";
 			productName = EventEmitterTests;
-			productReference = 21450D5B1D5B703400ED7567 /* EventEmitterTests.xctest */;
+			productReference = 21450D5B1D5B703400ED7567 /* EventEmitter iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		2158E4311E093E4D002A957E /* EventEmitter tvOS */ = {
@@ -288,7 +288,7 @@
 			projectRoot = "";
 			targets = (
 				21F197561D438E2400BEDAE3 /* EventEmitter iOS */,
-				21450D5A1D5B703400ED7567 /* EventEmitterTests */,
+				21450D5A1D5B703400ED7567 /* EventEmitter iOSTests */,
 				2158E4311E093E4D002A957E /* EventEmitter tvOS */,
 				2158E4391E093E4E002A957E /* EventEmitter tvOSTests */,
 			);
@@ -422,7 +422,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/EventEmitter tvOS/Info-tvOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/EventEmitter/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gujci.EventEmitter-tvOS";
@@ -446,7 +446,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/EventEmitter tvOS/Info-tvOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/EventEmitter/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gujci.EventEmitter-tvOS";
@@ -634,7 +634,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		21450D631D5B703400ED7567 /* Build configuration list for PBXNativeTarget "EventEmitterTests" */ = {
+		21450D631D5B703400ED7567 /* Build configuration list for PBXNativeTarget "EventEmitter iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21450D641D5B703400ED7567 /* Debug */,

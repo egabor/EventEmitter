@@ -34,8 +34,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "21450D5A1D5B703400ED7567"
-               BuildableName = "EventEmitterTests.xctest"
-               BlueprintName = "EventEmitterTests"
+               BuildableName = "EventEmitter iOSTests.xctest"
+               BlueprintName = "EventEmitter iOSTests"
                ReferencedContainer = "container:EventEmitter.xcodeproj">
             </BuildableReference>
          </TestableReference>
