@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2124A2471E0ACEA4000953F1 /* Info-tvOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2124A2461E0ACEA4000953F1 /* Info-tvOS.plist */; };
 		21450D5E1D5B703400ED7567 /* EventEmitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */; };
 		21450D601D5B703400ED7567 /* EventEmitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F197571D438E2400BEDAE3 /* EventEmitter.framework */; };
 		21450D671D5B708000ED7567 /* EventEmitter.framework in Resources */ = {isa = PBXBuildFile; fileRef = 21F197571D438E2400BEDAE3 /* EventEmitter.framework */; };
@@ -46,11 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2124A2461E0ACEA4000953F1 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-tvOS.plist"; path = "EventEmitter/Info-tvOS.plist"; sourceTree = "<group>"; };
 		21450D5B1D5B703400ED7567 /* EventEmitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventEmitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitterTests.swift; sourceTree = "<group>"; };
 		21450D5F1D5B703400ED7567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2158E4321E093E4D002A957E /* EventEmitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventEmitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2158E4351E093E4E002A957E /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-tvOS.plist"; path = "EventEmitter tvOS/Info-tvOS.plist"; sourceTree = "<group>"; };
 		2158E43A1E093E4E002A957E /* EventEmitter tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EventEmitter tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F197571D438E2400BEDAE3 /* EventEmitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventEmitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F1975A1D438E2400BEDAE3 /* EventEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEmitter.h; sourceTree = "<group>"; };
@@ -112,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				21F1975C1D438E2400BEDAE3 /* Info-iOS.plist */,
-				2158E4351E093E4E002A957E /* Info-tvOS.plist */,
+				2124A2461E0ACEA4000953F1 /* Info-tvOS.plist */,
 			);
 			name = "Support Files";
 			sourceTree = "<group>";
@@ -322,6 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2124A2471E0ACEA4000953F1 /* Info-tvOS.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +650,7 @@
 				2158E4451E093E4E002A957E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2158E4461E093E4E002A957E /* Build configuration list for PBXNativeTarget "EventEmitter tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -656,6 +659,7 @@
 				2158E4481E093E4E002A957E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		21F197511D438E2400BEDAE3 /* Build configuration list for PBXProject "EventEmitter" */ = {
 			isa = XCConfigurationList;

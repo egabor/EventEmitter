@@ -15,7 +15,7 @@ public protocol Event {
 }
 
 public protocol EventEmitter {
-    var listeners : Dictionary<String, Array<Any>>? {get set}
+    var listeners: [String: [Any]]? {get set}
     
     /// Create a new event listener, not expecting information from the trigger
     ///

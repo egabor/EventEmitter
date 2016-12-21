@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "21F197561D438E2400BEDAE3"
-               BuildableName = "EventEmitter iOS.framework"
+               BuildableName = "EventEmitter.framework"
                BlueprintName = "EventEmitter iOS"
                ReferencedContainer = "container:EventEmitter.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "21F197561D438E2400BEDAE3"
-            BuildableName = "EventEmitter iOS.framework"
+            BuildableName = "EventEmitter.framework"
             BlueprintName = "EventEmitter iOS"
             ReferencedContainer = "container:EventEmitter.xcodeproj">
          </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "21F197561D438E2400BEDAE3"
-            BuildableName = "EventEmitter iOS.framework"
+            BuildableName = "EventEmitter.framework"
             BlueprintName = "EventEmitter iOS"
             ReferencedContainer = "container:EventEmitter.xcodeproj">
          </BuildableReference>
@@ -84,7 +84,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "21F197561D438E2400BEDAE3"
-            BuildableName = "EventEmitter iOS.framework"
+            BuildableName = "EventEmitter.framework"
             BlueprintName = "EventEmitter iOS"
             ReferencedContainer = "container:EventEmitter.xcodeproj">
          </BuildableReference>
