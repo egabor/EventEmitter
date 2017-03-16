@@ -8,9 +8,9 @@
 
 import Foundation
 
-/// Model to store actions
-struct EventListenerAction <T> {
+internal struct EventListenerAction <T> {
     var listenerAction : ((T?) -> ())
+    var oneTime: Bool = false
     
     init(_ callback:@escaping ((T?) -> ())) {
         listenerAction = callback;
@@ -31,8 +31,9 @@ extension String: Event {
 
 // MARK: - Default implementation
 public extension EventEmitter {
+    
     mutating func on(_ event:Event, action:@escaping (()->())) {
-        let newListener = EventListenerAction<Any>(action);
+        let newListener = EventListenerAction<Any>(action)
         addListener(event.rawValue, newEventListener: newListener)
     }
     
@@ -44,7 +45,7 @@ public extension EventEmitter {
     }
     
     mutating func on<T>(_ event:Event, action:@escaping ((T?)->())) {
-        let newListener = EventListenerAction(action);
+        let newListener = EventListenerAction(action)
         addListener(event.rawValue, newEventListener: newListener)
     }
     
@@ -64,36 +65,50 @@ public extension EventEmitter {
         }
     }
     
-    func emit(_ event: Event) {
-        if let actionObjects = self.listeners?[event.rawValue] {
-            actionObjects.forEach() {
-                if let parameterizedAction = ($0 as? EventListenerAction<Any>) {
-                    parameterizedAction.listenerAction(nil)
-                }
+    mutating func emit(_ event: Event) {
+        guard var actionObjects = listeners?[event.rawValue]  else {
+            print("no acctions for event \(event.rawValue)")
+            return
+        }
+        for (index, action) in actionObjects.enumerated() {
+            guard let parameterizedAction = (action as? EventListenerAction<Any>) else { continue }
+            parameterizedAction.listenerAction(nil)
+            if parameterizedAction.oneTime {
+                actionObjects.remove(at: index)
             }
         }
+        listeners?[event.rawValue] = actionObjects
     }
     
-    func emit<T: Any>(_ event:Event, information:T) {
-        if let actionObjects = self.listeners?[event.rawValue] {
-            actionObjects.forEach() {
-                if let parameterizedAction = ($0 as? EventListenerAction<T>) {
-                    parameterizedAction.listenerAction(information)
-                }
-                else if let unParameterizedAction = $0 as? EventListenerAction<Any> {
-                    unParameterizedAction.listenerAction(information)
-                }
-                else {
-                    print("could not call callback on \(event) \nwith information \"\(information)\" which is a \(Mirror(reflecting: information).subjectType)")
+    mutating func emit<T: Any>(_ event:Event, information:T) {
+        guard var actionObjects = listeners?[event.rawValue]  else {
+            print("no acctions for event \(event.rawValue)")
+            return
+        }
+        for (index, action) in actionObjects.enumerated() {
+            if let parameterizedAction = (action as? EventListenerAction<T>) {
+                parameterizedAction.listenerAction(information)
+                if parameterizedAction.oneTime {
+                    actionObjects.remove(at: index)
                 }
             }
+            else if let unParameterizedAction = action as? EventListenerAction<Any> {
+                unParameterizedAction.listenerAction(information)
+                if unParameterizedAction.oneTime {
+                    actionObjects.remove(at: index)
+                }
+            }
+            else {
+                print("could not call callback on \(event) \nwith information \"\(information)\" which is a \(Mirror(reflecting: information).subjectType)")
+            }
         }
+        listeners?[event.rawValue] = actionObjects
     }
 }
 
 // MARK: - Utils
 extension EventEmitter {
-    mutating fileprivate func addListener<T>(_ event:String, newEventListener:EventListenerAction<T>) {
+    mutating internal func addListener<T>(_ event:String, newEventListener:EventListenerAction<T>) {
         if listeners == nil {
             listeners = [:]
         }

@@ -15,6 +15,7 @@ enum TestEvent: String, Event {
 }
 
 class TestEmitter: EventEmitter {
+
     var listeners : Dictionary<String, Array<Any>>? = [:]
 }
 

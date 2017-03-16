@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		211BAA631E7A951800F67B40 /* EventEmitter+Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BAA621E7A951800F67B40 /* EventEmitter+Once.swift */; };
+		211BAA641E7A951800F67B40 /* EventEmitter+Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BAA621E7A951800F67B40 /* EventEmitter+Once.swift */; };
 		2124A2471E0ACEA4000953F1 /* Info-tvOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2124A2461E0ACEA4000953F1 /* Info-tvOS.plist */; };
 		21450D5E1D5B703400ED7567 /* EventEmitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */; };
 		21450D601D5B703400ED7567 /* EventEmitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F197571D438E2400BEDAE3 /* EventEmitter.framework */; };
@@ -20,6 +22,8 @@
 		2158E44E1E093EEA002A957E /* EventEmitterQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC8D7D1DA5B0FA00143129 /* EventEmitterQueueTests.swift */; };
 		2158E44F1E093EED002A957E /* EventEmitterForwardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F34A791DC22CB200FBE73E /* EventEmitterForwardTests.swift */; };
 		2158E4501E093F16002A957E /* EventEmitter.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2158E4321E093E4D002A957E /* EventEmitter.framework */; };
+		2161BE0E1E7AC29200D3D9FA /* EventEmitterOnceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2161BE0C1E7AC1D700D3D9FA /* EventEmitterOnceTests.swift */; };
+		2161BE0F1E7AC29400D3D9FA /* EventEmitterOnceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2161BE0C1E7AC1D700D3D9FA /* EventEmitterOnceTests.swift */; };
 		21F1975B1D438E2400BEDAE3 /* EventEmitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F1975A1D438E2400BEDAE3 /* EventEmitter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		21F197721D438ED600BEDAE3 /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F197711D438ED600BEDAE3 /* EventEmitter.swift */; };
 		21F34A781DC22A4200FBE73E /* EventEmitter+EventForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F34A771DC22A4200FBE73E /* EventEmitter+EventForward.swift */; };
@@ -47,12 +51,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		211BAA621E7A951800F67B40 /* EventEmitter+Once.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventEmitter+Once.swift"; sourceTree = "<group>"; };
 		2124A2461E0ACEA4000953F1 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-tvOS.plist"; path = "EventEmitter/Info-tvOS.plist"; sourceTree = "<group>"; };
 		21450D5B1D5B703400ED7567 /* EventEmitter iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EventEmitter iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitterTests.swift; sourceTree = "<group>"; };
 		21450D5F1D5B703400ED7567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2158E4321E093E4D002A957E /* EventEmitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventEmitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2158E43A1E093E4E002A957E /* EventEmitter tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EventEmitter tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2161BE0C1E7AC1D700D3D9FA /* EventEmitterOnceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEmitterOnceTests.swift; sourceTree = "<group>"; };
 		21F197571D438E2400BEDAE3 /* EventEmitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventEmitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F1975A1D438E2400BEDAE3 /* EventEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEmitter.h; sourceTree = "<group>"; };
 		21F1975C1D438E2400BEDAE3 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-iOS.plist"; path = "EventEmitter/Info-iOS.plist"; sourceTree = "<group>"; };
@@ -105,6 +111,7 @@
 				21450D5D1D5B703400ED7567 /* EventEmitterTests.swift */,
 				21FC8D7D1DA5B0FA00143129 /* EventEmitterQueueTests.swift */,
 				21F34A791DC22CB200FBE73E /* EventEmitterForwardTests.swift */,
+				2161BE0C1E7AC1D700D3D9FA /* EventEmitterOnceTests.swift */,
 			);
 			path = EventEmitterTests;
 			sourceTree = "<group>";
@@ -144,9 +151,10 @@
 			children = (
 				21F1975A1D438E2400BEDAE3 /* EventEmitter.h */,
 				21F197711D438ED600BEDAE3 /* EventEmitter.swift */,
-				21FC8D791DA5A9F700143129 /* EventEmitter+DispatchQueue.swift */,
 				21FC8D7F1DA5B66200143129 /* EventEmitter+DefaultImplementation.swift */,
+				21FC8D791DA5A9F700143129 /* EventEmitter+DispatchQueue.swift */,
 				21F34A771DC22A4200FBE73E /* EventEmitter+EventForward.swift */,
+				211BAA621E7A951800F67B40 /* EventEmitter+Once.swift */,
 			);
 			path = EventEmitter;
 			sourceTree = "<group>";
@@ -336,6 +344,7 @@
 			files = (
 				21450D5E1D5B703400ED7567 /* EventEmitterTests.swift in Sources */,
 				21F34A7A1DC22CB200FBE73E /* EventEmitterForwardTests.swift in Sources */,
+				2161BE0E1E7AC29200D3D9FA /* EventEmitterOnceTests.swift in Sources */,
 				21FC8D7E1DA5B0FA00143129 /* EventEmitterQueueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,6 +355,7 @@
 			files = (
 				2158E44C1E093EE5002A957E /* EventEmitter+EventForward.swift in Sources */,
 				2158E44A1E093EE1002A957E /* EventEmitter+DispatchQueue.swift in Sources */,
+				211BAA641E7A951800F67B40 /* EventEmitter+Once.swift in Sources */,
 				2158E4491E093EDE002A957E /* EventEmitter.swift in Sources */,
 				2158E44B1E093EE3002A957E /* EventEmitter+DefaultImplementation.swift in Sources */,
 			);
@@ -357,6 +367,7 @@
 			files = (
 				2158E44D1E093EE8002A957E /* EventEmitterTests.swift in Sources */,
 				2158E44F1E093EED002A957E /* EventEmitterForwardTests.swift in Sources */,
+				2161BE0F1E7AC29400D3D9FA /* EventEmitterOnceTests.swift in Sources */,
 				2158E44E1E093EEA002A957E /* EventEmitterQueueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +378,7 @@
 			files = (
 				21F34A781DC22A4200FBE73E /* EventEmitter+EventForward.swift in Sources */,
 				21FC8D7A1DA5A9F700143129 /* EventEmitter+DispatchQueue.swift in Sources */,
+				211BAA631E7A951800F67B40 /* EventEmitter+Once.swift in Sources */,
 				21F197721D438ED600BEDAE3 /* EventEmitter.swift in Sources */,
 				21FC8D801DA5B66200143129 /* EventEmitter+DefaultImplementation.swift in Sources */,
 			);

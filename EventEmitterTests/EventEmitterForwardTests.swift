@@ -21,8 +21,27 @@ class EventEmitterForwardTests: XCTestCase {
             expectation.fulfill()
         }
         
-        testSecondEmitter.forward(TestEvent.test, to: TestEvent.other, by: testEmitter)
+        testSecondEmitter.forward(TestEvent.test, to: TestEvent.other, by: &testEmitter)
         
+        testSecondEmitter.emit(TestEvent.test)
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testForwardingOnce() {
+        let expectation = self.expectation(description: "singe event forward")
+        
+        testEmitter.once(TestEvent.other) {
+            expectation.fulfill()
+        }
+        
+        testSecondEmitter.forward(TestEvent.test, to: TestEvent.other, by: &testEmitter)
+        
+        testSecondEmitter.emit(TestEvent.test)
         testSecondEmitter.emit(TestEvent.test)
         
         waitForExpectations(timeout: 10) { error in

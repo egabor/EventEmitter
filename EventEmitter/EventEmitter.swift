@@ -51,12 +51,12 @@ public protocol EventEmitter {
     ///
     /// - parameter event:       Matching listener events will fire when this is called
     /// - parameter information: pass values to your listeners
-    func emit(_ event:Event, information:Any)
+    mutating func emit(_ event:Event, information:Any)
     
     /// Triggers an event
     ///
     /// - parameter event: Matching listener events will fire when this is called
-    func emit(_ event:Event)
+    mutating func emit(_ event:Event)
     
     /// Removes all listeners by default, or specific listeners through paramters
     ///
