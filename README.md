@@ -105,13 +105,14 @@ on<T>(_ events: [Event], action: ((T?) -> ()))
 ```swift
 once<T>(_ event: Event, action: ((T?) -> ()))
 ```
+
 #### unsubscribe
 
 ```swift
 removeListeners(_ event: Event?)
 ```
 
-#Installation
+# Installation
 ## Carthage 
 
 Put this line into your cartfile
@@ -120,8 +121,9 @@ Put this line into your cartfile
 github "Gujci/EventEmitter"
 ```
 
-#TODO
+# TODO
  - [x] Travis support
  - [ ] Full code coverage
  - [ ] Support custom threads
+ - [x] Once
 
