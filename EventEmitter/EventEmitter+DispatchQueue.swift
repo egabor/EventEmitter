@@ -14,7 +14,7 @@ public extension EventEmitter where Self: AnyObject {
     /// - Parameters:
     ///     - eventName: Matching listener eventNames will fire when this is called
     ///     - information: pass values to your listeners
-    mutating func emit<T: Any>(onMain event: Event, information: T) {
+    func emit<T: Any>(onMain event: Event, information: T) {
         DispatchQueue.main.async { [weak self] in
             //FIXME: - make this call work !!!
 //            self?.emit(event, information: information as T)
@@ -46,7 +46,7 @@ public extension EventEmitter where Self: AnyObject {
     /// Triggers an event on the main thread
     /// - Parameters:
     ///     - eventName: Matching listener eventNames will fire when this is called
-    mutating func emit(onMain event: Event) {
+    func emit(onMain event: Event) {
         DispatchQueue.main.async { [weak self] in
             self?.emit(event)
         }
