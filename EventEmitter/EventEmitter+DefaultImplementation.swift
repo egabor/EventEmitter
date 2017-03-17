@@ -66,6 +66,50 @@ public extension EventEmitter {
     }
     
     mutating func emit(_ event: Event) {
+        _emit(event)
+    }
+    
+    mutating func emit<T: Any>(_ event:Event, information:T) {
+        _emit(event, information: information)
+    }
+}
+
+// MARK: - Non mutating functions (for reference types)
+public extension EventEmitter where Self: AnyObject {
+    
+    /// Unmutable emit
+    ///
+    /// - Parameter event: event to emit
+    func emit(_ event: Event) {
+        var referenceCopy = self
+        referenceCopy._emit(event)
+    }
+    
+    /// Unmutable emit
+    ///
+    /// - Parameters:
+    ///   - event: event to emit
+    ///   - information: generic information
+    func emit<T: Any>(_ event:Event, information:T) {
+        var referenceCopy = self
+        referenceCopy._emit(event, information: information)
+    }
+}
+
+// MARK: - Utils
+internal extension EventEmitter {
+    
+    mutating func addListener<T>(_ event:String, newEventListener:EventListenerAction<T>) {
+        if listeners == nil {
+            listeners = [:]
+        }
+        if listeners?[event] == nil {
+            listeners?[event] = [Any]()
+        }
+        listeners?[event]!.append(newEventListener)
+    }
+    
+    mutating func _emit(_ event: Event) {
         guard var actionObjects = listeners?[event.rawValue]  else {
             print("no acctions for event \(event.rawValue)")
             return
@@ -80,7 +124,7 @@ public extension EventEmitter {
         listeners?[event.rawValue] = actionObjects
     }
     
-    mutating func emit<T: Any>(_ event:Event, information:T) {
+    mutating func _emit<T: Any>(_ event:Event, information:T) {
         guard var actionObjects = listeners?[event.rawValue]  else {
             print("no acctions for event \(event.rawValue)")
             return
@@ -103,18 +147,5 @@ public extension EventEmitter {
             }
         }
         listeners?[event.rawValue] = actionObjects
-    }
-}
-
-// MARK: - Utils
-extension EventEmitter {
-    mutating internal func addListener<T>(_ event:String, newEventListener:EventListenerAction<T>) {
-        if listeners == nil {
-            listeners = [:]
-        }
-        if listeners?[event] == nil {
-            listeners?[event] = [Any]()
-        }
-        listeners?[event]!.append(newEventListener)
     }
 }
