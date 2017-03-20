@@ -59,7 +59,8 @@ Note: This is a protocoll so you can use it with `struct`s as well.
 emit("some", information: parameter)
 ```
 
-#Documentation
+# Documentation
+
 ### Functions to be called from an EventEmitter instance
 
 ```swift
@@ -126,4 +127,5 @@ github "Gujci/EventEmitter"
  - [ ] Full code coverage
  - [ ] Support custom threads
  - [x] Once
+ - [ ] More documentation
 
