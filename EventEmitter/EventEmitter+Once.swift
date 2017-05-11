@@ -10,7 +10,7 @@ import Foundation
 
 public extension EventEmitter {
     
-    /// Calls the callbanc the first time  the event is triggered
+    /// Calls the callback the first time  the event is triggered
     ///
     /// - Parameters:
     ///   - event: Matching trigger events will cause this listener to fire
@@ -21,7 +21,7 @@ public extension EventEmitter {
         addListener(event.rawValue, newEventListener: newListener)
     }
     
-    /// Calls the callbanc the first time  the event is triggered
+    /// Calls the callback the first time  the event is triggered
     ///
     /// - Parameters:
     ///   - event: Matching trigger events will cause this listener to fire
@@ -29,6 +29,30 @@ public extension EventEmitter {
     mutating func once<T>(_ event:Event, action:@escaping ((T?)->())) {
         var newListener = EventListenerAction(action)
         newListener.oneTime = true
+        addListener(event.rawValue, newEventListener: newListener)
+    }
+    
+    /// Calls the callback one time when the 'when' condition is true
+    ///
+    /// - Parameters:
+    ///   - event: Matching trigger events will cause this listener to fire
+    ///   - action: The block of code you want executed when the event triggers
+    ///   - when: condition to perform the action
+    mutating func once(_ event:Event, action:@escaping (()->()), when: @escaping(()->Bool)) {
+        var newListener = EventListenerAction<Any>(action)
+        newListener.thisTime = when
+        addListener(event.rawValue, newEventListener: newListener)
+    }
+    
+    /// Calls the callback one time when the 'when' condition is true
+    ///
+    /// - Parameters:
+    ///   - event: Matching trigger events will cause this listener to fire
+    ///   - action: The block of code you want executed when the event triggers
+    ///   - when: condition to perform the action
+    mutating func once<T>(_ event:Event, action:@escaping ((T?)->()), when: @escaping(()->Bool)) {
+        var newListener = EventListenerAction(action)
+        newListener.thisTime = when
         addListener(event.rawValue, newEventListener: newListener)
     }
 }

@@ -11,6 +11,7 @@ import Foundation
 internal struct EventListenerAction <T> {
     var listenerAction : ((T?) -> ())
     var oneTime: Bool = false
+    var thisTime: (() -> Bool)? = nil
     
     init(_ callback:@escaping ((T?) -> ())) {
         listenerAction = callback;
@@ -109,6 +110,7 @@ internal extension EventEmitter {
         listeners?[event]!.append(newEventListener)
     }
     
+    //TODO: - remove duplicates
     mutating func _emit(_ event: Event) {
         guard var actionObjects = listeners?[event.rawValue]  else {
             print("no acctions for event \(event.rawValue)")
@@ -116,6 +118,13 @@ internal extension EventEmitter {
         }
         for (index, action) in actionObjects.enumerated() {
             guard let parameterizedAction = (action as? EventListenerAction<Any>) else { continue }
+            if let thisTime = parameterizedAction.thisTime {
+                if thisTime() {
+                    parameterizedAction.listenerAction(nil)
+                    actionObjects.remove(at: index)
+                }
+                break
+            }
             parameterizedAction.listenerAction(nil)
             if parameterizedAction.oneTime {
                 actionObjects.remove(at: index)
@@ -131,12 +140,26 @@ internal extension EventEmitter {
         }
         for (index, action) in actionObjects.enumerated() {
             if let parameterizedAction = (action as? EventListenerAction<T>) {
+                if let thisTime = parameterizedAction.thisTime {
+                    if thisTime() {
+                        parameterizedAction.listenerAction(information)
+                        actionObjects.remove(at: index)
+                    }
+                    break
+                }
                 parameterizedAction.listenerAction(information)
                 if parameterizedAction.oneTime {
                     actionObjects.remove(at: index)
                 }
             }
             else if let unParameterizedAction = action as? EventListenerAction<Any> {
+                if let thisTime = unParameterizedAction.thisTime {
+                    if thisTime() {
+                        unParameterizedAction.listenerAction(information)
+                        actionObjects.remove(at: index)
+                    }
+                    break
+                }
                 unParameterizedAction.listenerAction(information)
                 if unParameterizedAction.oneTime {
                     actionObjects.remove(at: index)

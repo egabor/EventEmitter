@@ -82,4 +82,26 @@ class EventEmitterOnceTests: XCTestCase {
             }
         }
     }
+    
+    func testOnceWithWhen() {
+        let expectation = self.expectation(description: "once test")
+        var counter = 0
+        
+        testEmitter.once(TestEvent.test, action: {
+            XCTAssert(counter == 1)
+            expectation.fulfill()
+        }, when: { counter == 1 })
+        
+        testEmitter.emit(TestEvent.test)
+        testEmitter.emit(TestEvent.test)
+        counter = 1
+        testEmitter.emit(TestEvent.test)
+        testEmitter.emit(TestEvent.test)
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
 }
