@@ -114,4 +114,9 @@ class EventEmitterTests: XCTestCase {
             }
         }
     }
+    
+    func testLogging() {
+        
+        testEmitter.emit(TestEvent.test)
+    }
 }

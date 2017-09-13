@@ -113,7 +113,9 @@ internal extension EventEmitter {
     //TODO: - remove duplicates
     mutating func _emit(_ event: Event) {
         guard var actionObjects = listeners?[event.rawValue]  else {
-            print("no acctions for event \(event.rawValue)")
+            if ProcessInfo.processInfo.arguments.contains("EventLoggingEnabled") {
+                print("no acctions for event \(event.rawValue)")
+            }
             return
         }
         for (index, action) in actionObjects.enumerated() {
@@ -135,7 +137,9 @@ internal extension EventEmitter {
     
     mutating func _emit<T: Any>(_ event:Event, information:T) {
         guard var actionObjects = listeners?[event.rawValue]  else {
-            print("no acctions for event \(event.rawValue)")
+            if ProcessInfo.processInfo.arguments.contains("EventLoggingEnabled") {
+                print("no acctions for event \(event.rawValue)")
+            }
             return
         }
         for (index, action) in actionObjects.enumerated() {
@@ -166,7 +170,9 @@ internal extension EventEmitter {
                 }
             }
             else {
-                print("could not call callback on \(event) \nwith information \"\(information)\" which is a \(Mirror(reflecting: information).subjectType)")
+                if ProcessInfo.processInfo.arguments.contains("EventLoggingEnabled") {
+                    print("could not call callback on \(event) \nwith information \"\(information)\" which is a \(Mirror(reflecting: information).subjectType)")
+                }
             }
         }
         listeners?[event.rawValue] = actionObjects

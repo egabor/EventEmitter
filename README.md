@@ -122,6 +122,10 @@ Put this line into your cartfile
 github "Gujci/EventEmitter"
 ```
 
+# Debugging
+
+To turn on logging add `EventLoggingEnabled` to 'Arguments passed on launch' at Schema/Run/Arguments
+
 # TODO
  - [x] Travis support
  - [ ] Full code coverage
