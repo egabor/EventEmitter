@@ -122,6 +122,14 @@ Put this line into your cartfile
 github "Gujci/EventEmitter"
 ```
 
+### Swift 3
+
+for Swift 3 use the `0.5.5` tag. This version will not be supported.
+
+```
+github "Gujci/EventEmitter" "== 0.5.5"
+```
+
 # Debugging
 
 To turn on logging add `EventLoggingEnabled` to 'Arguments passed on launch' at Schema/Run/Arguments
