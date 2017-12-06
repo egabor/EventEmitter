@@ -121,14 +121,14 @@ internal extension EventEmitter {
         for (index, action) in actionObjects.enumerated() {
             guard let parameterizedAction = (action as? EventListenerAction<Any>) else { continue }
             if let thisTime = parameterizedAction.thisTime {
-                if thisTime() {
+                if thisTime() && actionObjects.count > index {
                     parameterizedAction.listenerAction(nil)
                     actionObjects.remove(at: index)
                 }
                 break
             }
             parameterizedAction.listenerAction(nil)
-            if parameterizedAction.oneTime {
+            if parameterizedAction.oneTime && actionObjects.count > index {
                 actionObjects.remove(at: index)
             }
         }
