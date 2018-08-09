@@ -71,4 +71,68 @@ class EventEmitterQueueTests: XCTestCase {
         }
     }
     
+    func testMainParameteredEventPerformace() {
+        let expectation = self.expectation(description: "main event w/ parameter")
+        let testQueue1 = DispatchQueue(label: "testQueue1")
+        let testQueue2 = DispatchQueue(label: "testQueue2")
+        
+        var successCount = 0
+        
+        testEmitter.on(TestEvent.test) { (info: String?) in
+            XCTAssert(info == "asd")
+            successCount += 1
+            guard successCount == 20 else { return }
+            expectation.fulfill()
+        }
+        
+        measure {
+            DispatchQueue.global().async {
+                self.testEmitter.emit(onMain: TestEvent.test, information: "asd")
+                self.testEmitter.once(TestEvent.test) { (_: String?) in }
+                self.testEmitter.emit(onMain: TestEvent.test, information: "asd")
+                self.testEmitter.emit(TestEvent.test, information: "asd")
+                self.testEmitter.emit(onMain: TestEvent.test, information: "asd")
+                self.testEmitter.on(TestEvent.test) { (_: String?) in }
+                self.testEmitter.emit(TestEvent.test, information: "asd")
+                self.testEmitter.once(TestEvent.test) { (_: String?) in }
+                self.testEmitter.emit(TestEvent.test, information: "asd")
+                self.testEmitter.emit(onMain: TestEvent.test, information: "asd")
+                self.testEmitter.on(TestEvent.test) { (_: String?) in }
+            }
+            
+            testQueue1.async {
+                self.testEmitter.emit(TestEvent.test, information: "asd")
+                self.testEmitter.once(TestEvent.test) { (_: String?) in }
+                self.testEmitter.emit(onMain: TestEvent.test, information: "asd")
+                self.testEmitter.emit(TestEvent.test, information: "asd")
+                self.testEmitter.on(TestEvent.test) { (_: String?) in }
+                self.testEmitter.emit(onMain: TestEvent.test, information: "asd")
+                self.testEmitter.emit(TestEvent.test, information: "asd")
+                self.testEmitter.once(TestEvent.test) { (_: String?) in }
+                self.testEmitter.emit(TestEvent.test, information: "asd")
+                self.testEmitter.emit(onMain: TestEvent.test, information: "asd")
+                self.testEmitter.on(TestEvent.test) { (_: String?) in }
+            }
+            
+            testQueue2.async {
+                self.testEmitter.emit(onMain: TestEvent.test, information: "asd")
+                self.testEmitter.once(TestEvent.test) { (_: String?) in }
+                self.testEmitter.emit(TestEvent.test, information: "asd")
+                self.testEmitter.emit(TestEvent.test, information: "asd")
+                self.testEmitter.emit(onMain: TestEvent.test, information: "asd")
+                self.testEmitter.emit(TestEvent.test, information: "asd")
+                self.testEmitter.emit(TestEvent.test, information: "asd")
+                self.testEmitter.once(TestEvent.test) { (_: String?) in }
+                self.testEmitter.emit(onMain: TestEvent.test, information: "asd")
+            }
+        }
+        
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
 }

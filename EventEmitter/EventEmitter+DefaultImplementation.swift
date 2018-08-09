@@ -8,6 +8,8 @@
 
 import Foundation
 
+private let accessQueue = DispatchQueue(label: "SynchronizedArrayAccess")
+
 internal struct EventListenerAction <T> {
     var listenerAction : ((T?) -> ())
     var oneTime: Bool = false
@@ -59,19 +61,19 @@ public extension EventEmitter {
     
     mutating func removeListeners(_ event: Event? = nil) {
         if let event = event?.rawValue {
-            self.listeners?[event]?.removeAll()
+            accessQueue.sync { self.listeners?[event]?.removeAll() }
         }
         else {
-            self.listeners?.removeAll(keepingCapacity: false);
+            accessQueue.sync { self.listeners?.removeAll(keepingCapacity: false) }
         }
     }
     
     mutating func emit(_ event: Event) {
-        _emit(event)
+        defaultEmit(event)
     }
     
     mutating func emit<T: Any>(_ event:Event, information:T) {
-        _emit(event, information: information)
+        defaultEmit(event, information: information)
     }
 }
 
@@ -83,7 +85,7 @@ public extension EventEmitter where Self: AnyObject {
     /// - Parameter event: event to emit
     func emit(_ event: Event) {
         var referenceCopy = self
-        referenceCopy._emit(event)
+        referenceCopy.defaultEmit(event)
     }
     
     /// Unmutable emit
@@ -93,7 +95,7 @@ public extension EventEmitter where Self: AnyObject {
     ///   - information: generic information
     func emit<T: Any>(_ event:Event, information:T) {
         var referenceCopy = self
-        referenceCopy._emit(event, information: information)
+        referenceCopy.defaultEmit(event, information: information)
     }
 }
 
@@ -101,18 +103,20 @@ public extension EventEmitter where Self: AnyObject {
 internal extension EventEmitter {
     
     mutating func addListener<T>(_ event:String, newEventListener:EventListenerAction<T>) {
-        if listeners == nil {
-            listeners = [:]
+        accessQueue.sync {
+            if listeners == nil {
+                listeners = [:]
+            }
+            if listeners?[event] == nil {
+                listeners?[event] = [Any]()
+            }
+            listeners?[event]!.append(newEventListener)
         }
-        if listeners?[event] == nil {
-            listeners?[event] = [Any]()
-        }
-        listeners?[event]!.append(newEventListener)
     }
     
     //TODO: - remove duplicates
-    mutating func _emit(_ event: Event, at queue: DispatchQueue? = nil) {
-        guard var actionObjects = listeners?[event.rawValue]  else {
+    mutating func defaultEmit(_ event: Event, at queue: DispatchQueue? = nil) {
+        guard var actionObjects = (accessQueue.sync { listeners?[event.rawValue] }) else {
             if ProcessInfo.processInfo.arguments.contains("EventLoggingEnabled") {
                 print("no acctions for event \(event.rawValue)")
             }
@@ -132,11 +136,11 @@ internal extension EventEmitter {
                 actionObjects.remove(at: index)
             }
         }
-        listeners?[event.rawValue] = actionObjects
+        accessQueue.sync { listeners?[event.rawValue] = actionObjects }
     }
     
-    mutating func _emit<T: Any>(_ event:Event, information:T, at queue: DispatchQueue? = nil) {
-        guard var actionObjects = listeners?[event.rawValue]  else {
+    mutating func defaultEmit<T: Any>(_ event:Event, information:T, at queue: DispatchQueue? = nil) {
+        guard var actionObjects = (accessQueue.sync { listeners?[event.rawValue] })  else {
             if ProcessInfo.processInfo.arguments.contains("EventLoggingEnabled") {
                 print("no acctions for event \(event.rawValue)")
             }
@@ -152,7 +156,7 @@ internal extension EventEmitter {
                     break
                 }
                 perform(action: parameterizedAction.listenerAction, with: information, at: queue)
-                if parameterizedAction.oneTime {
+                if parameterizedAction.oneTime, actionObjects.count > index {
                     actionObjects.remove(at: index)
                 }
             }
@@ -160,12 +164,14 @@ internal extension EventEmitter {
                 if let thisTime = unParameterizedAction.thisTime {
                     if thisTime() {
                         perform(action: unParameterizedAction.listenerAction, with: information, at: queue)
-                        actionObjects.remove(at: index)
+                        if actionObjects.count > index {
+                            actionObjects.remove(at: index)
+                        }
                     }
                     break
                 }
                 perform(action: unParameterizedAction.listenerAction, with: information, at: queue)
-                if unParameterizedAction.oneTime {
+                if unParameterizedAction.oneTime, actionObjects.count > index {
                     actionObjects.remove(at: index)
                 }
             }
@@ -175,7 +181,7 @@ internal extension EventEmitter {
                 }
             }
         }
-        listeners?[event.rawValue] = actionObjects
+        accessQueue.sync { listeners?[event.rawValue] = actionObjects }
     }
     
     private func perform<T: Any>(action parameterizedAction: @escaping (T?) -> (), with information: T,

@@ -16,7 +16,7 @@ public extension EventEmitter where Self: AnyObject {
     ///     - information: pass values to your listeners
     func emit<T: Any>(onMain event: Event, information: T) {
         var referenceCopy = self
-        referenceCopy._emit(event, information: information, at: DispatchQueue.main)
+        referenceCopy.defaultEmit(event, information: information, at: DispatchQueue.main)
     }
     
     /// Triggers an event on the main thread
@@ -24,7 +24,7 @@ public extension EventEmitter where Self: AnyObject {
     ///     - eventName: Matching listener eventNames will fire when this is called
     func emit(onMain event: Event) {
         var referenceCopy = self
-        referenceCopy._emit(event, at: DispatchQueue.main)
+        referenceCopy.defaultEmit(event, at: DispatchQueue.main)
     }
 }
 
@@ -36,7 +36,7 @@ public extension EventEmitter where Self: AnyObject {
     ///     - information: pass values to your listeners
     func emit<T: Any>(on queue: DispatchQueue, event: Event, information: T) {
         var referenceCopy = self
-        referenceCopy._emit(event, information: information, at: queue)
+        referenceCopy.defaultEmit(event, information: information, at: queue)
     }
     
     /// Triggers an event on the main thread
@@ -44,7 +44,7 @@ public extension EventEmitter where Self: AnyObject {
     ///     - eventName: Matching listener eventNames will fire when this is called
     func emit(on queue: DispatchQueue, event: Event) {
         var referenceCopy = self
-        referenceCopy._emit(event, at: queue)
+        referenceCopy.defaultEmit(event, at: queue)
     }
 }
 
