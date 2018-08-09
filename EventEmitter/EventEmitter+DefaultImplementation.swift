@@ -111,7 +111,7 @@ internal extension EventEmitter {
     }
     
     //TODO: - remove duplicates
-    mutating func _emit(_ event: Event) {
+    mutating func _emit(_ event: Event, at queue: DispatchQueue? = nil) {
         guard var actionObjects = listeners?[event.rawValue]  else {
             if ProcessInfo.processInfo.arguments.contains("EventLoggingEnabled") {
                 print("no acctions for event \(event.rawValue)")
@@ -122,12 +122,12 @@ internal extension EventEmitter {
             guard let parameterizedAction = (action as? EventListenerAction<Any>) else { continue }
             if let thisTime = parameterizedAction.thisTime {
                 if thisTime() && actionObjects.count > index {
-                    parameterizedAction.listenerAction(nil)
+                    perform(action: parameterizedAction.listenerAction, at: queue)
                     actionObjects.remove(at: index)
                 }
                 break
             }
-            parameterizedAction.listenerAction(nil)
+            perform(action: parameterizedAction.listenerAction, at: queue)
             if parameterizedAction.oneTime && actionObjects.count > index {
                 actionObjects.remove(at: index)
             }
@@ -135,7 +135,7 @@ internal extension EventEmitter {
         listeners?[event.rawValue] = actionObjects
     }
     
-    mutating func _emit<T: Any>(_ event:Event, information:T) {
+    mutating func _emit<T: Any>(_ event:Event, information:T, at queue: DispatchQueue? = nil) {
         guard var actionObjects = listeners?[event.rawValue]  else {
             if ProcessInfo.processInfo.arguments.contains("EventLoggingEnabled") {
                 print("no acctions for event \(event.rawValue)")
@@ -146,12 +146,12 @@ internal extension EventEmitter {
             if let parameterizedAction = (action as? EventListenerAction<T>) {
                 if let thisTime = parameterizedAction.thisTime {
                     if thisTime() {
-                        parameterizedAction.listenerAction(information)
+                        perform(action: parameterizedAction.listenerAction, with: information, at: queue)
                         actionObjects.remove(at: index)
                     }
                     break
                 }
-                parameterizedAction.listenerAction(information)
+                perform(action: parameterizedAction.listenerAction, with: information, at: queue)
                 if parameterizedAction.oneTime {
                     actionObjects.remove(at: index)
                 }
@@ -159,12 +159,12 @@ internal extension EventEmitter {
             else if let unParameterizedAction = action as? EventListenerAction<Any> {
                 if let thisTime = unParameterizedAction.thisTime {
                     if thisTime() {
-                        unParameterizedAction.listenerAction(information)
+                        perform(action: unParameterizedAction.listenerAction, with: information, at: queue)
                         actionObjects.remove(at: index)
                     }
                     break
                 }
-                unParameterizedAction.listenerAction(information)
+                perform(action: unParameterizedAction.listenerAction, with: information, at: queue)
                 if unParameterizedAction.oneTime {
                     actionObjects.remove(at: index)
                 }
@@ -176,5 +176,24 @@ internal extension EventEmitter {
             }
         }
         listeners?[event.rawValue] = actionObjects
+    }
+    
+    private func perform<T: Any>(action parameterizedAction: @escaping (T?) -> (), with information: T,
+                                 at queue: DispatchQueue? = nil) {
+        if let queue = queue {
+            queue.async { parameterizedAction(information) }
+        }
+        else {
+            parameterizedAction(information)
+        }
+    }
+    
+    private func perform(action unParameterizedAction: @escaping (Any?) -> (), at queue: DispatchQueue? = nil) {
+        if let queue = queue {
+            queue.async { unParameterizedAction(nil) }
+        }
+        else {
+            unParameterizedAction(nil)
+        }
     }
 }
