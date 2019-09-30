@@ -2,11 +2,11 @@ Pod::Spec.new do |s|
   s.name             = 'EventEmitter'
   s.version          = '0.7.1'
   s.swift_version    = '4.2'
-  s.summary          = ''
+  s.summary          = 'A lightweight tool to easily implement listener pattern.'
  
   s.description      = <<-DESC
 
-
+  A lightweight tool to easily implement listener pattern. A lightweight tool to easily implement listener pattern.
                        DESC
  
   s.homepage         = 'https://github.com/egabor/EventEmitter'
