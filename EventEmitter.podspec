@@ -14,7 +14,6 @@ Pod::Spec.new do |s|
   s.author           = { 'Máté Gujgiczer' => 'mate.gujgiczer@icloud.com' }
   s.source           = { :git => 'https://github.com/egabor/EventEmitter.git', :tag => s.version.to_s }
  
-  s.xcconfig = {'ENABLE_BITCODE' => 'NO'}
   s.ios.deployment_target = '9.3'
   s.source_files = 'EventEmitter/**/*.swift'
  
