@@ -114,6 +114,11 @@ removeListeners(_ event: Event?)
 ```
 
 # Installation
+
+## SPM 
+
+Use the GitHub link in Xcode
+
 ## Carthage 
 
 Put this line into your cartfile
