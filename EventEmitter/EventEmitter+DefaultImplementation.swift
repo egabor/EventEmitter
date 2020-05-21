@@ -129,7 +129,7 @@ internal extension EventEmitter {
                     perform(action: parameterizedAction.listenerAction, at: queue)
                     actionObjects.remove(at: index)
                 }
-                break
+                continue
             }
             perform(action: parameterizedAction.listenerAction, at: queue)
             if parameterizedAction.oneTime && actionObjects.count > index {
@@ -153,7 +153,7 @@ internal extension EventEmitter {
                         perform(action: parameterizedAction.listenerAction, with: information, at: queue)
                         actionObjects.remove(at: index)
                     }
-                    break
+                    continue
                 }
                 perform(action: parameterizedAction.listenerAction, with: information, at: queue)
                 if parameterizedAction.oneTime, actionObjects.count > index {
@@ -168,7 +168,7 @@ internal extension EventEmitter {
                             actionObjects.remove(at: index)
                         }
                     }
-                    break
+                    continue
                 }
                 perform(action: unParameterizedAction.listenerAction, with: information, at: queue)
                 if unParameterizedAction.oneTime, actionObjects.count > index {
