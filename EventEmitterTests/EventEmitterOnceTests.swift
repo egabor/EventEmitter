@@ -31,7 +31,7 @@ class EventEmitterOnceTests: XCTestCase {
     }
     
     func testOnceTriggering() {
-        let expectation = self.expectation(description: "triggered ince test")
+        let expectation = self.expectation(description: "triggered once test")
         
         testEmitter.once(TestEvent.test) {
             expectation.fulfill()
@@ -97,6 +97,60 @@ class EventEmitterOnceTests: XCTestCase {
         counter = 1
         testEmitter.emit(TestEvent.test)
         testEmitter.emit(TestEvent.test)
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testMultipleOnceWithWhen() {
+        let expectation = self.expectation(description: "once test")
+        var counter = 0
+        
+        testEmitter.once(TestEvent.test, action: {
+            XCTAssert(counter == 2)
+            expectation.fulfill()
+        }, when: { counter == 2 })
+        
+        testEmitter.once(TestEvent.test, action: {
+            XCTAssert(counter == 1)
+            counter = 2
+        }, when: { counter == 1 })
+        
+        testEmitter.emit(TestEvent.test)
+        testEmitter.emit(TestEvent.test)
+        counter = 1
+        testEmitter.emit(TestEvent.test)
+        testEmitter.emit(TestEvent.test)
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testMultipleParameterizedOnceWithWhen() {
+        let expectation = self.expectation(description: "once test")
+        var counter = 0
+        
+        testEmitter.once(TestEvent.test, action: {
+            XCTAssert(counter == 2)
+            expectation.fulfill()
+        }, when: { counter == 2 })
+        
+        testEmitter.once(TestEvent.test, action: {
+            XCTAssert(counter == 1)
+            counter = 2
+        }, when: { counter == 1 })
+        
+        testEmitter.emit(TestEvent.test, information: counter)
+        testEmitter.emit(TestEvent.test, information: counter)
+        counter = 1
+        testEmitter.emit(TestEvent.test, information: counter)
+        testEmitter.emit(TestEvent.test, information: counter)
         
         waitForExpectations(timeout: 10) { error in
             if let error = error {
