@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'EventEmitter'
-  s.version          = '0.7.1'
+  s.version          = '0.8.0'
   s.swift_version    = '4.2'
   s.summary          = 'A lightweight tool to easily implement listener pattern.'
  
