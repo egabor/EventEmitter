@@ -107,15 +107,24 @@ class EventEmitterOnceTests: XCTestCase {
     
     func testMultipleOnceWithWhen() {
         let expectation = self.expectation(description: "once test")
+        var passedTroughFirst = false
+        var passedTroughSecond = false
         var counter = 0
         
         testEmitter.once(TestEvent.test, action: {
             XCTAssert(counter == 2)
+            XCTAssertTrue(passedTroughFirst)
+            XCTAssertTrue(passedTroughSecond)
             expectation.fulfill()
         }, when: { counter == 2 })
         
         testEmitter.once(TestEvent.test, action: {
             XCTAssert(counter == 1)
+            passedTroughFirst = true
+        }, when: { counter == 1 })
+        
+        testEmitter.once(TestEvent.test, action: {
+            passedTroughSecond = true
             counter = 2
         }, when: { counter == 1 })
         
@@ -134,15 +143,24 @@ class EventEmitterOnceTests: XCTestCase {
     
     func testMultipleParameterizedOnceWithWhen() {
         let expectation = self.expectation(description: "once test")
+        var passedTroughFirst = false
+        var passedTroughSecond = false
         var counter = 0
         
         testEmitter.once(TestEvent.test, action: {
             XCTAssert(counter == 2)
+            XCTAssertTrue(passedTroughFirst)
+            XCTAssertTrue(passedTroughSecond)
             expectation.fulfill()
         }, when: { counter == 2 })
         
         testEmitter.once(TestEvent.test, action: {
             XCTAssert(counter == 1)
+            passedTroughFirst = true
+        }, when: { counter == 1 })
+        
+        testEmitter.once(TestEvent.test, action: {
+            passedTroughSecond = true
             counter = 2
         }, when: { counter == 1 })
         
