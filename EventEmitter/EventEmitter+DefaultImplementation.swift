@@ -32,6 +32,14 @@ extension String: Event {
     public var rawValue: String { return self }
 }
 
+// MARK: - Util
+extension Array {
+    
+    func removing(indices: [Index]) -> Self {
+        enumerated().compactMap { indices.contains($0.0) ? nil : $0.1 }
+    }
+}
+
 // MARK: - Default implementation
 public extension EventEmitter {
     
@@ -116,48 +124,50 @@ internal extension EventEmitter {
     
     //TODO: - remove duplicates
     mutating func defaultEmit(_ event: Event, at queue: DispatchQueue? = nil) {
-        guard var actionObjects = (accessQueue.sync { listeners?[event.rawValue] }) else {
+        guard let actionObjects = (accessQueue.sync { listeners?[event.rawValue] }) else {
             if ProcessInfo.processInfo.arguments.contains("EventLoggingEnabled") {
                 print("no acctions for event \(event.rawValue)")
             }
             return
         }
+        var indexesToRemove: [Int] = []
         for (index, action) in actionObjects.enumerated() {
             guard let parameterizedAction = (action as? EventListenerAction<Any>) else { continue }
             if let thisTime = parameterizedAction.thisTime {
                 if thisTime() && actionObjects.count > index {
                     perform(action: parameterizedAction.listenerAction, at: queue)
-                    actionObjects.remove(at: index)
+                    indexesToRemove.append(index)
                 }
                 continue
             }
             perform(action: parameterizedAction.listenerAction, at: queue)
             if parameterizedAction.oneTime && actionObjects.count > index {
-                actionObjects.remove(at: index)
+                indexesToRemove.append(index)
             }
         }
-        accessQueue.sync { listeners?[event.rawValue] = actionObjects }
+        accessQueue.sync { listeners?[event.rawValue] = actionObjects.removing(indices: indexesToRemove) }
     }
     
     mutating func defaultEmit<T: Any>(_ event:Event, information:T, at queue: DispatchQueue? = nil) {
-        guard var actionObjects = (accessQueue.sync { listeners?[event.rawValue] })  else {
+        guard let actionObjects = (accessQueue.sync { listeners?[event.rawValue] })  else {
             if ProcessInfo.processInfo.arguments.contains("EventLoggingEnabled") {
                 print("no acctions for event \(event.rawValue)")
             }
             return
         }
+        var indexesToRemove: [Int] = []
         for (index, action) in actionObjects.enumerated() {
             if let parameterizedAction = (action as? EventListenerAction<T>) {
                 if let thisTime = parameterizedAction.thisTime {
                     if thisTime() {
                         perform(action: parameterizedAction.listenerAction, with: information, at: queue)
-                        actionObjects.remove(at: index)
+                        indexesToRemove.append(index)
                     }
                     continue
                 }
                 perform(action: parameterizedAction.listenerAction, with: information, at: queue)
                 if parameterizedAction.oneTime, actionObjects.count > index {
-                    actionObjects.remove(at: index)
+                    indexesToRemove.append(index)
                 }
             }
             else if let unParameterizedAction = action as? EventListenerAction<Any> {
@@ -165,14 +175,14 @@ internal extension EventEmitter {
                     if thisTime() {
                         perform(action: unParameterizedAction.listenerAction, with: information, at: queue)
                         if actionObjects.count > index {
-                            actionObjects.remove(at: index)
+                            indexesToRemove.append(index)
                         }
                     }
                     continue
                 }
                 perform(action: unParameterizedAction.listenerAction, with: information, at: queue)
                 if unParameterizedAction.oneTime, actionObjects.count > index {
-                    actionObjects.remove(at: index)
+                    indexesToRemove.append(index)
                 }
             }
             else {
@@ -181,7 +191,7 @@ internal extension EventEmitter {
                 }
             }
         }
-        accessQueue.sync { listeners?[event.rawValue] = actionObjects }
+        accessQueue.sync { listeners?[event.rawValue] = actionObjects.removing(indices: indexesToRemove) }
     }
     
     private func perform<T: Any>(action parameterizedAction: @escaping (T?) -> (), with information: T,
